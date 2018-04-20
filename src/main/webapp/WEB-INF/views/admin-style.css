@@ -1,0 +1,16 @@
+@charset "UTF-8";
+body{
+	background-image: url(http://ncwebcreations.com/wp-content/uploads/2016/12/pexels-photo-1-e1499782168666.jpg);
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-attachment: fixed;
+    background-origin: border-box;
+    background-position: center center;
+    background-size: cover;
+}
+
+.container{
+    padding: 20px;
+    border-radius: 15px;
+    opacity: 0.9;
+}
