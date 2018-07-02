@@ -1,10 +1,13 @@
 package ua.model.request;
 
+import org.hibernate.validator.constraints.NotBlank;
 import ua.entity.Brand;
+
 
 public class ModelRequest {
     private Integer id;
 
+    @NotBlank(message = "Field cannot be empty!")
     private String name;
 
     private Brand brand;

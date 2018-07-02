@@ -1,7 +1,7 @@
 package ua.converter;
 
+import com.sun.istack.internal.Nullable;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import ua.entity.Brand;
 import ua.repository.BrandRepository;

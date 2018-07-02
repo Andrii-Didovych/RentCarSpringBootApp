@@ -1,7 +1,8 @@
 package ua.entity;
 
+import ua.entity.enums.*;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,53 +11,44 @@ import java.util.List;
 @Table(name = "car")
 public class Car extends AbstractEntity {
 
-    private BigDecimal pricePerDay;
+    private String model;
 
     private LocalDate yearOfManufacture;
-
-    private LocalDate periodOfRentFrom;
-
-    private LocalDate periodOfRentTo;
-
-    //   Enum
-    private Chauffeur chauffeur;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Brand brand;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Body body;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private City region;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private City goToRegion;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Engine engine;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Transmission transmission;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Drive drive;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Door numberOfDoors;
+    @OneToMany(mappedBy = "car")
+    private List<InfoAboutRent> infoAboutRent = new ArrayList<>();
 
     @OneToOne
     private Driver driver;
 
-    @ManyToMany(mappedBy = "cars")
-    private List<Driver> drivers = new ArrayList<>();
+    //enums
+    private Body body;
 
-    public BigDecimal getPricePerDay() {
-        return pricePerDay;
+    private Engine engine;
+
+    private Transmission transmission;
+
+    private Drive drive;
+
+    private Door numberOfDoors;
+
+    public List<InfoAboutRent> getInfoAboutRent() {
+        return infoAboutRent;
     }
 
-    public void setPricePerDay(BigDecimal pricePerDay) {
-        this.pricePerDay = pricePerDay;
+    public void setInfoAboutRent(List<InfoAboutRent> infoAboutRent) {
+        this.infoAboutRent = infoAboutRent;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public LocalDate getYearOfManufacture() {
@@ -67,52 +59,12 @@ public class Car extends AbstractEntity {
         this.yearOfManufacture = yearOfManufacture;
     }
 
-    public LocalDate getPeriodOfRentFrom() {
-        return periodOfRentFrom;
-    }
-
-    public void setPeriodOfRentFrom(LocalDate periodOfRentFrom) {
-        this.periodOfRentFrom = periodOfRentFrom;
-    }
-
-    public LocalDate getPeriodOfRentTo() {
-        return periodOfRentTo;
-    }
-
-    public void setPeriodOfRentTo(LocalDate periodOfRentTo) {
-        this.periodOfRentTo = periodOfRentTo;
-    }
-
     public Brand getBrand() {
         return brand;
     }
 
     public void setBrand(Brand brand) {
         this.brand = brand;
-    }
-
-    public Body getBody() {
-        return body;
-    }
-
-    public void setBody(Body body) {
-        this.body = body;
-    }
-
-    public City getRegion() {
-        return region;
-    }
-
-    public void setRegion(City region) {
-        this.region = region;
-    }
-
-    public City getGoToRegion() {
-        return goToRegion;
-    }
-
-    public void setGoToRegion(City goToRegion) {
-        this.goToRegion = goToRegion;
     }
 
     public Driver getDriver() {
@@ -123,20 +75,12 @@ public class Car extends AbstractEntity {
         this.driver = driver;
     }
 
-    public List<Driver> getDrivers() {
-        return drivers;
+    public Body getBody() {
+        return body;
     }
 
-    public void setDrivers(List<Driver> drivers) {
-        this.drivers = drivers;
-    }
-
-    public Chauffeur getChauffeur() {
-        return chauffeur;
-    }
-
-    public void setChauffeur(Chauffeur chauffeur) {
-        this.chauffeur = chauffeur;
+    public void setBody(Body body) {
+        this.body = body;
     }
 
     public Engine getEngine() {
@@ -155,19 +99,19 @@ public class Car extends AbstractEntity {
         this.transmission = transmission;
     }
 
-    public Door getNumberOfDoors() {
-        return numberOfDoors;
-    }
-
-    public void setNumberOfDoors(Door numberOfDoors) {
-        this.numberOfDoors = numberOfDoors;
-    }
-
     public Drive getDrive() {
         return drive;
     }
 
     public void setDrive(Drive drive) {
         this.drive = drive;
+    }
+
+    public Door getNumberOfDoors() {
+        return numberOfDoors;
+    }
+
+    public void setNumberOfDoors(Door numberOfDoors) {
+        this.numberOfDoors = numberOfDoors;
     }
 }

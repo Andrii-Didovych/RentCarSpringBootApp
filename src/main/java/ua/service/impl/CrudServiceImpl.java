@@ -1,28 +1,23 @@
 package ua.service.impl;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import ua.entity.AbstractEntityName;
+import ua.repository.JpaNameRepository;
 import ua.service.CrudService;
 
+public class CrudServiceImpl<T extends AbstractEntityName , ID extends Serializable> implements CrudService<T, ID>{
 
-public class CrudServiceImpl<T, ID extends Serializable> implements CrudService<T, ID>{
+    private final JpaNameRepository repository;
 
-    private final JpaRepository<T, ID> repository;
-
-    public CrudServiceImpl(JpaRepository<T, ID> repository) {
+    public CrudServiceImpl(JpaNameRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public T findOne(ID id ) {
-        List<ID> ids = new ArrayList<>();
-        ids.add(id);
-        List<T> ts = repository.findAllById(ids);
-        T t = ts.get(0);
-        return t;
+        return (T) repository.findOne(id);
     }
 
     @Override
@@ -32,11 +27,17 @@ public class CrudServiceImpl<T, ID extends Serializable> implements CrudService<
 
     @Override
     public void save(T entity) {
+        if (!repository.exists(1)){
+            entity.setName(MyGlobalVariable.NOT_SELECTED);
+//            repository.save(entity);
+        }
+//        else if (!entity.getName().equals(MyGlobalVariable.NOT_SELECTED)&&entity.getId()!=1)
         repository.save(entity);
     }
 
     @Override
     public void delete(ID id) {
-        repository.deleteById(id);
+        if (!id.equals(1))
+        repository.delete(id);
     }
 }

@@ -1,28 +1,36 @@
 package ua.service.impl;
 
 import org.springframework.stereotype.Service;
+import ua.model.view.CarView;
 import ua.model.view.DriverView;
 import ua.repository.DriverRepository;
 import ua.service.DriverService;
 
-import java.util.List;
-
 @Service
 public class DriverServiceImpl implements DriverService {
 
-    private DriverRepository repository;
+    private final DriverRepository repository;
+
+    private  Integer id;
 
     public DriverServiceImpl(DriverRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public DriverView findAuthorizedUser() {
-        return repository.findAllDriverRepository();
+    public DriverView findAuthorizedDriverView(String email) {
+        DriverView view= repository.findAuthorizeDriverViewRepository(email);
+        id = view.getId();
+        return view;
     }
 
     @Override
-    public List<String> findAllCities() {
-        return repository.findAllCitiesRepository();
+    public DriverView pageOfDriver(Integer id) {
+        return repository.findPageOfDriverById(id);
+    }
+
+    @Override
+    public CarView findDriversCar(String email) {
+        return repository.findCarByDriversId(email);
     }
 }

@@ -11,6 +11,22 @@ body{
 
 .container{
     padding: 20px;
-    border-radius: 15px;
     opacity: 0.9;
+}
+
+.my-button-like-link {
+    background:none!important;
+    color:inherit;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    /*border is optional*/
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 13px;
+    color: #337ab7;
+}
+
+.navbar-expand-lg {
+    border-radius: 0;
 }

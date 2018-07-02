@@ -3,10 +3,9 @@ package ua.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
-import ua.model.request.ModelRequest;
 import ua.service.DriverService;
-import ua.service.ModelService;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/profile")
@@ -19,9 +18,9 @@ public class ProfileController {
     }
 
     @GetMapping
-    public String show(Model model) {
-        model.addAttribute("driver", service.findAuthorizedUser());
-        model.addAttribute("cities", service.findAllCities());
+    public String show(Model model, Principal principal) {
+        model.addAttribute("driver", service.findAuthorizedDriverView(principal.getName()));
+        model.addAttribute("driversCar", service.findDriversCar(principal.getName()));
         return "profile";
     }
 

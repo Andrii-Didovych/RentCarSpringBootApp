@@ -1,12 +1,13 @@
 package ua.service;
 
+import ua.model.view.CarView;
 import ua.model.view.DriverView;
 
-import java.util.List;
 
 public interface DriverService   {
-    DriverView findAuthorizedUser();
+    DriverView findAuthorizedDriverView(String email);
 
-    List<String> findAllCities();
+    CarView findDriversCar(String email);
 
+    DriverView pageOfDriver(Integer id);
 }

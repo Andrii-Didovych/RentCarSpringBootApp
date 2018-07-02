@@ -1,5 +1,6 @@
 package ua.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -12,9 +13,6 @@ public class Brand extends AbstractEntityName {
 
     @OneToMany(mappedBy = "brand")
     private List<Car> cars = new ArrayList<>();
-
-    @OneToMany(mappedBy = "brand")
-    private List<Model> models = new ArrayList<>();
 
     public Brand() {
     }
@@ -29,13 +27,5 @@ public class Brand extends AbstractEntityName {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
-    }
-
-    public List<Model> getModels() {
-        return models;
-    }
-
-    public void setModels(List<Model> models) {
-        this.models = models;
     }
 }

@@ -14,10 +14,7 @@ public class City extends AbstractEntityName {
     private List<Driver> drivers = new ArrayList<>();
 
     @OneToMany(mappedBy = "region")
-    private List<Car> locationsCars = new ArrayList<>();
-
-    @OneToMany(mappedBy = "goToRegion")
-    private List<Car> directionCars = new ArrayList<>();
+    private List<InfoAboutRent> locationsCars = new ArrayList<>();
 
     public City() {
     }
@@ -34,19 +31,12 @@ public class City extends AbstractEntityName {
         this.drivers = drivers;
     }
 
-    public List<Car> getLocationsCars() {
+    public List<InfoAboutRent> getLocationsCars() {
         return locationsCars;
     }
 
-    public void setLocationsCars(List<Car> locationsCars) {
+    public void setLocationsCars(List<InfoAboutRent> locationsCars) {
         this.locationsCars = locationsCars;
     }
 
-    public List<Car> getDirectionCars() {
-        return directionCars;
-    }
-
-    public void setDirectionCars(List<Car> directionCars) {
-        this.directionCars = directionCars;
-    }
 }

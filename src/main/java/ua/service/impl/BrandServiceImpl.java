@@ -1,10 +1,9 @@
 package ua.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ua.entity.Brand;
-import ua.repository.BrandRepository;
+import ua.repository.JpaNameRepository;
 import ua.service.BrandService;
 
 
@@ -13,8 +12,7 @@ import ua.service.BrandService;
 public class BrandServiceImpl extends CrudServiceImpl<Brand,Integer> implements BrandService {
 
 
-    @Autowired
-    public BrandServiceImpl( BrandRepository repository) {
+    public BrandServiceImpl(JpaNameRepository<Brand, Integer> repository) {
         super(repository);
     }
 }

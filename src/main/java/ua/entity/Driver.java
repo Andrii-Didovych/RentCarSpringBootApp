@@ -16,11 +16,13 @@ public class Driver extends AbstractEntityName {
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
+    @Transient
     private Integer age;
 
     @Column(name = "experience_began")
     private LocalDate experienceBegan;
 
+    @Transient
     private Integer experience;
 
     @Column(name = "photo")
@@ -32,19 +34,36 @@ public class Driver extends AbstractEntityName {
     @ManyToOne(fetch = FetchType.LAZY)
     private City placeOfBirth;
 
-    @OneToOne
+    @OneToOne(mappedBy = "driver")
     private Car car;
 
-    @ManyToMany
-    @JoinTable(name = "driver_car", joinColumns = @JoinColumn(name = "driver_id"),
-    inverseJoinColumns = @JoinColumn(name = "car_id"))
-    private List<Car> cars = new ArrayList<>();
+    @OneToOne
+    private User user;
+
+    @ManyToMany(mappedBy = "drivers")
+    private List<InfoAboutRent> listOfInfoAboutCar = new ArrayList<>();
 
     public Driver() {
     }
 
+    public List<InfoAboutRent> getListOfInfoAboutCar() {
+        return listOfInfoAboutCar;
+    }
+
+    public void setListOfInfoAboutCar(List<InfoAboutRent> listOfInfoAboutCar) {
+        this.listOfInfoAboutCar = listOfInfoAboutCar;
+    }
+
     public Driver(String name) {
         super(name);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getSurname() {
@@ -125,13 +144,5 @@ public class Driver extends AbstractEntityName {
 
     public void setCar(Car car) {
         this.car = car;
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
     }
 }
