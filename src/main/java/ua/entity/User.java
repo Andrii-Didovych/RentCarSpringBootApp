@@ -2,15 +2,11 @@ package ua.entity;
 
 import ua.entity.enums.Role;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="_user")
+@Table(name="_user",  indexes = @Index(columnList = "email"))
 public class User extends AbstractEntity {
-
 
     private String email;
 

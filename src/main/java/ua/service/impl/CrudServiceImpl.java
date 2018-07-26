@@ -29,9 +29,9 @@ public class CrudServiceImpl<T extends AbstractEntityName , ID extends Serializa
     public void save(T entity) {
         if (!repository.exists(1)){
             entity.setName(MyGlobalVariable.NOT_SELECTED);
-//            repository.save(entity);
+            repository.save(entity);
         }
-//        else if (!entity.getName().equals(MyGlobalVariable.NOT_SELECTED)&&entity.getId()!=1)
+//        if (entity.getId()!=1)
         repository.save(entity);
     }
 

@@ -37,13 +37,37 @@ public class Driver extends AbstractEntityName {
     @OneToOne(mappedBy = "driver")
     private Car car;
 
+    @OneToMany(mappedBy = "receiver")
+    private List<Comment> receivedComments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "sender")
+    private List<Comment> sendedComments = new ArrayList<>();
+
     @OneToOne
     private User user;
 
-    @ManyToMany(mappedBy = "drivers")
+    @ManyToMany
+    @JoinTable(name = "driver_car", joinColumns = @JoinColumn(name = "driver_id"),
+            inverseJoinColumns = @JoinColumn(name = "info_about_rent_id"))
     private List<InfoAboutRent> listOfInfoAboutCar = new ArrayList<>();
 
     public Driver() {
+    }
+
+    public List<Comment> getReceivedComments() {
+        return receivedComments;
+    }
+
+    public void setReceivedComments(List<Comment> receivedComments) {
+        this.receivedComments = receivedComments;
+    }
+
+    public List<Comment> getSendedComments() {
+        return sendedComments;
+    }
+
+    public void setSendedComments(List<Comment> sendedComments) {
+        this.sendedComments = sendedComments;
     }
 
     public List<InfoAboutRent> getListOfInfoAboutCar() {

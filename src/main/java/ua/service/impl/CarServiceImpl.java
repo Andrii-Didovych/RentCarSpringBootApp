@@ -52,6 +52,7 @@ public class CarServiceImpl implements CarService{
             car.setEngine(Engine.Missing);
             car.setBody(Body.Missing);
             car.setYearOfManufacture(LocalDate.of(1111,11,11));
+            car.setPhotoOfCar(MyGlobalVariable.DEFAULT_PHOTO_OF_CAR);
         }else {
         if (!carRequest.getBrand().getName().equals(notSelect)) car.setBrand(carRequest.getBrand());
         if (!carRequest.getModel().isEmpty())car.setModel(carRequest.getModel());

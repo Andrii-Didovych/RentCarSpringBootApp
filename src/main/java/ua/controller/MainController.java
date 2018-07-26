@@ -12,5 +12,4 @@ public class MainController {
         model.addAttribute("message", "Hello!!!");
         return "index";
     }
-
 }

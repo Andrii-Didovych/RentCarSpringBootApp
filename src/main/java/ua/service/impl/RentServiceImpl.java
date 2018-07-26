@@ -1,6 +1,5 @@
 package ua.service.impl;
 
-import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Service;
 import ua.converter.DateConverter;
 import ua.entity.Car;
@@ -10,9 +9,11 @@ import ua.entity.enums.Status;
 import ua.model.request.LendCarRequest;
 import ua.model.view.DriverView;
 import ua.model.view.OrderView;
+import ua.repository.DriverRepository;
 import ua.repository.RentRepository;
 import ua.service.RentService;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,10 +25,14 @@ public class RentServiceImpl implements RentService {
 
     private final DateConverter converter;
 
-    public RentServiceImpl(RentRepository repository, DateConverter converter) {
+    public RentServiceImpl(RentRepository repository, DateConverter converter, DriverRepository driverRepository) {
         this.repository = repository;
         this.converter = converter;
+        this.driverRepository = driverRepository;
     }
+
+    private final DriverRepository driverRepository;
+
 
 //--------------------for LendController-------------------------
     @Override
@@ -90,16 +95,25 @@ public class RentServiceImpl implements RentService {
     public void confirmOrder(Integer driverId, Integer infoAboutRentId) {
         Driver driver = repository.findOneDriver(driverId);
         InfoAboutRent rent = repository.findParticularOrderById(infoAboutRentId);
+
         Iterator<Driver> iterator = rent.getDrivers().iterator();
         while (iterator.hasNext()) {
             Driver tmp = iterator.next();
-            System.out.println(tmp.getName());
             if (tmp.getId() != driver.getId()) {
                 iterator.remove();
             }
         }
+
+        Iterator<InfoAboutRent> iterator1 = driver.getListOfInfoAboutCar().iterator();
+        while (iterator1.hasNext()) {
+            InfoAboutRent aboutRent = iterator1.next();
+            if (aboutRent.getId() != rent.getId()) {
+                iterator1.remove();
+            }
+        }
         rent.setStatus(Status.RESERVED);
         repository.save(rent);
+
     }
 
 //    delete own suggestion if it has not confirmed yet
@@ -108,38 +122,6 @@ public class RentServiceImpl implements RentService {
         InfoAboutRent rent = repository.findParticularOrderById(infoAboutRentId);
         if (rent.getStatus().equals(Status.ACTIVE))
             repository.delete(rent);
-    }
-//----------------------end methods of LendController-----------------------------------
-
-
-//*******************For BorrowController******************
-    @Override
-    public void addCarToOrderList(Integer id, String email) {
-        InfoAboutRent rent = repository.findOrderById(id);
-        Driver driver = repository.findDriverByUserEmail(email);
-        if (!rent.getDrivers().contains(driver))
-            rent.getDrivers().add(driver);
-        repository.save(rent);
-    }
-
-    @Override
-    public List<OrderView> findAllFreeCars(String email) {
-        return repository.findAllFreeCars(email, Status.ACTIVE);
-    }
-
-    @Override
-    public List<OrderView> findSelectedOrders(String email) {
-        return repository.findOrdersByDriverId(email, Status.ACTIVE, Status.ACTIVE);
-    }
-
-    @Override
-    public List<OrderView> findReservedOrder(String email) {
-        return repository.findOrdersByDriverId(email, Status.RESERVED, Status.COMPLETED);
-    }
-
-    @Override
-    public List<OrderView> findFinishedOrdersForBorrow(String name) {
-        return repository.findOrdersByDriverId(name, Status.PASSIVE, Status.PASSIVE);
     }
 
     @Override
@@ -151,6 +133,4 @@ public class RentServiceImpl implements RentService {
         else rent.setStatus(Status.PASSIVE);
         repository.save(rent);
     }
-
-    //************************end methods of BorrowController**************************
 }

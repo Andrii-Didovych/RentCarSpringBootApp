@@ -1,8 +1,6 @@
 package ua.service;
 
-import org.hibernate.criterion.Order;
 import ua.model.request.LendCarRequest;
-import ua.model.view.CarView;
 import ua.model.view.DriverView;
 import ua.model.view.OrderView;
 
@@ -29,16 +27,5 @@ public interface RentService {
 
     void deleteOrder(Integer infoAboutRentId);
 
-//    Borrow
-    void addCarToOrderList(Integer id, String email);
-
-    List<OrderView> findAllFreeCars(String email);
-
-    List<OrderView> findSelectedOrders(String name);
-
-    List<OrderView> findReservedOrder(String name);
-
     void completeOrder(Integer infoAboutRentId);
-
-    List<OrderView> findFinishedOrdersForBorrow(String name);
 }

@@ -1,13 +1,21 @@
 package ua.service;
 
 import ua.model.view.CarView;
+import ua.model.view.CommentView;
 import ua.model.view.DriverView;
+
+import java.util.List;
 
 
 public interface DriverService   {
-    DriverView findAuthorizedDriverView(String email);
 
-    CarView findDriversCar(String email);
+    void postComment(Integer id, Integer senderId, String comment);
 
-    DriverView pageOfDriver(Integer id);
+    Integer findIdOfDriverByEmail(String email);
+
+    DriverView findDriverViewById(Integer id);
+
+    CarView findCarViewByDriverId(Integer id);
+
+    List<CommentView> findCommentsOfDriver(Integer id);
 }

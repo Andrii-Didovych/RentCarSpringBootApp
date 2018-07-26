@@ -11,6 +11,8 @@ import java.util.List;
 @Table(name = "car")
 public class Car extends AbstractEntity {
 
+    private String photoOfCar;
+
     private String model;
 
     private LocalDate yearOfManufacture;
@@ -34,6 +36,14 @@ public class Car extends AbstractEntity {
     private Drive drive;
 
     private Door numberOfDoors;
+
+    public String getPhotoOfCar() {
+        return photoOfCar;
+    }
+
+    public void setPhotoOfCar(String photoOfCar) {
+        this.photoOfCar = photoOfCar;
+    }
 
     public List<InfoAboutRent> getInfoAboutRent() {
         return infoAboutRent;

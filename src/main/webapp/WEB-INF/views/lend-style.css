@@ -1,0 +1,80 @@
+@charset "UTF-8";
+.container {
+    margin: 0px;
+    padding: 0px;
+}
+.container-for-lend {
+    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: 100%;
+    height: 500px;
+    padding: 0px;
+}
+.my-lend-car{
+    padding: 7% 8%;
+    height: 500px;
+    background-color: rgba(58, 37, 39, 0.48);
+}
+
+.my-list-of-orders{
+    background-color: #f7ecec;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 5px 20px 15px 20px;
+    color: black;
+}
+
+.my-form-for-particular-order{
+    background-image: url(https://www.vacation-lists.com/images/xroad-trip-packing-list700.jpg.pagespeed.ic.mVnCmdqhsa.jpg);
+    border-top: #c3b7d6 solid 10px;
+    padding: 0px;
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: 100%;
+    height: 500px;
+}
+
+.my-form-for-finished-orders{
+    background-image: url(https://cdn.cheapism.com/images/121516_best_road_trip_ideas_slide_0_fs.max-784x410.jpg);
+    border-top: #c3b7d6 solid 10px;
+    border-left: #c3b7d6 solid 10px;
+    padding: 0px;
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: 100% ;
+    height: 500px;
+}
+
+.my-list-of-clients{
+    background-color: #ffffff00;
+    padding: 5px;
+}
+.my-margin-for-list-of-clients{
+    background-color: rgba(17,54,74, 0.82);
+    padding: 5px;
+    border-left: #4f92ff solid 10px;
+    padding-bottom: 23px;
+}
+
+.my-margin-for-client{
+    background-color: rgba(17,54,74, 0.82);
+    padding: 5px;
+    border-left: #f0ad4e solid 10px;
+    padding-bottom: 23px;
+}
+.my-particular-order{
+    background-color: rgba(17,54,74, 0.82);
+    padding: 10px;
+    color: white;
+    border-left: #4f92ff solid 10px;
+    margin: 5px 20px 10px 5px;
+
+}
+
+.background-for-pictures-of-lend {
+    background-color: rgba(86, 61, 124, 0.31);
+    margin: 0px;
+    padding: 5px 20px 15px 20px;
+    height: 490px;
+}

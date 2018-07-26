@@ -10,6 +10,8 @@ public class CarView {
 
     private Integer id;
 
+    private String photoOfCar;
+
     private String brand;
 
     private String model;
@@ -26,10 +28,9 @@ public class CarView {
 
     private Door numberOfDoors;
 
-    public CarView(Integer id, String brand, String model, LocalDate yearOfManufacture,
-                   Engine engine, Transmission transmission, Drive drive, Body body, Door numberOfDoors) {
-        DateConverterImpl converter = new DateConverterImpl();
+    public CarView(Integer id, String photoOfCar, String brand, String model, LocalDate yearOfManufacture, Engine engine, Transmission transmission, Drive drive, Body body, Door numberOfDoors) {
         this.id = id;
+        this.photoOfCar = photoOfCar;
         this.brand = brand;
         this.model = model;
         this.yearOfManufacture = yearOfManufacture.format(DateTimeFormatter.ofPattern("yyyy"));
@@ -38,6 +39,14 @@ public class CarView {
         this.drive = drive;
         this.body = body;
         this.numberOfDoors = numberOfDoors;
+    }
+
+    public String getPhotoOfCar() {
+        return photoOfCar;
+    }
+
+    public void setPhotoOfCar(String photoOfCar) {
+        this.photoOfCar = photoOfCar;
     }
 
     public Transmission getTransmission() {

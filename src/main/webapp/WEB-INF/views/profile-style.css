@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.container-profile{
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    margin-top: 5px;
+    background-color: white;
+}
+.header-background{
+    background-image: url("https://s3.amazonaws.com/cars-bucket/${driversCar.photoOfCar}");
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: 100%;
+    height: 300px;
+}
+
+.left-side{
+    padding: 0px;
+}
+
+.right-side{
+    background-color: #c3b7d6;
+    padding: 0px;
+
+}
+.additional-right-side-because-margin{
+    background-color: white;
+    margin: 10px 0 0 10px;
+    border: #b39898 1px solid;
+}
+.comment-decorator{
+    background-color: #e9ebee;
+    padding: 10px;
+    margin: 10px;
+    min-height: 120px;
+    border: #b39898 1px solid;
+}
+.comment{
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: 100%;
+    height: 70px;
+    width: 50%;
+    /*padding: 10px;*/
+    border: #b39898 1px solid;
+    min-width: 283px;
+}
+.comment-inside{
+    height: 70px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6 );
+    margin: 0px;
+    padding: 5px;
+
+}
+.comment-text{
+    background-color: white;
+    margin: 10px  0 0 100px;
+    padding: 3px;
+    border: #b39898 1px solid;
+}
+@media screen and (min-width: 992px){
+    .container-profile{
+        padding-left: 10%;
+        padding-right: 20%;
+    }
+
+}

@@ -1,17 +1,20 @@
 @charset "UTF-8";
 body{
-	background-image: url(http://ncwebcreations.com/wp-content/uploads/2016/12/pexels-photo-1-e1499782168666.jpg);
+	padding: 0px;
+    margin: 0px;
+    background-color: #563d7c;
+    min-width: 417px;
+}
+
+.admin-container{
+    padding: 10% 10% 15% 10%;
+    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
     background-repeat: no-repeat;
     background-clip: border-box;
     background-attachment: fixed;
     background-origin: border-box;
     background-position: center center;
     background-size: cover;
-}
-
-.container{
-    padding: 20px;
-    opacity: 0.9;
 }
 
 .my-button-like-link {
@@ -24,9 +27,13 @@ body{
     cursor: pointer;
     margin-top: 15px;
     margin-left: 13px;
-    color: #337ab7;
+    color: white;
 }
 
-.navbar-expand-lg {
-    border-radius: 0;
+.footer{
+    background-color: #563d7c;
+    padding: 40px 10%;
+    color: white;
+
 }
+

@@ -1,16 +1,14 @@
 @charset "UTF-8";
 body{
-    /*background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);*/
-    /*background-repeat: no-repeat;*/
-    /*background-clip: border-box;*/
-    /*background-attachment: fixed;*/
-    /*background-size: contain;*/
-    /*background-origin: border-box;*/
-    /*background-position: center ;*/
-    /*!*opacity: 0.98;*!*/
     margin: 0px;
     padding: 0px;
-    min-width: 402px;
+    min-width: 416px;
+    background-color: #c3b7d6;
+}
+
+.edit-container {
+    margin: 0px;
+    padding: 0px;
 }
 
 .container{
@@ -30,7 +28,7 @@ body{
     cursor: pointer;
     margin-top: 15px;
     margin-left: 13px;
-    color: #337ab7;
+    color: white;
 }
 .navbar-expand-lg {
     border-radius: 0;
@@ -72,160 +70,51 @@ body{
 
 .my-edit-info-form{
     background-color: black;
-    padding: 15px 30px 5px 30px;
-    border-radius: 5px;
-    margin-bottom: 30px;
+    padding: 10px;
+    margin: 10px 0 10px -10px;
+    max-width: 550px;
 }
 
 .my-edit-about-driver{
-    background-color: #6161f3;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    background-color: #c3b7d6;
+    padding: 10px 0;
 }
 
 .my-edit-about-car{
-    background-color: #28a745;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    padding: 10px 0;
+    background-color: #a292b9;
 }
 
-.container-for-lend{
-    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100% ;
-    height: 500px;
-}
-.my-lend-car{
-    padding: 7% 8%;
-    height: 500px;
-    background-color: #4c20247a;
-}
-
-.my-list-of-orders{
-    background-color: #f7ecec;
-    border-radius: 10px;
-    margin: 20px;
-    padding: 5px 20px 15px 20px;
-    color: black;
-}
-
-.my-form-for-particular-order{
-    background-image: url(https://www.vacation-lists.com/images/xroad-trip-packing-list700.jpg.pagespeed.ic.mVnCmdqhsa.jpg);
-    border-top: aliceblue solid 10px;
-    padding: 5px 20px 15px 20px;
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100%;
-    height: 500px;
-}
-.my-particular-order{
-    background-color: rgba(17,54,74, 0.82);
+.edit-for-picture{
+    background-color: black;
     padding: 10px;
     color: white;
-    border-left: #4f92ff solid 10px;
-    margin: 5px 20px 10px 5px;
-
-}
-.my-form-for-finished-orders{
-    background-image: url(https://cdn.cheapism.com/images/121516_best_road_trip_ideas_slide_0_fs.max-784x410.jpg);
-    border-top: aliceblue solid 10px;
-    border-left: aliceblue solid 10px;
-    padding: 5px 20px 15px 20px;
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100% ;
-    height: 500px;
+    margin: 10px 0 10px -10px;
+    max-width: 550px;
 }
 
-.my-list-of-clients{
-    background-color: #ffffff00;
-    padding: 5px;
-}
-.my-margin-for-list-of-clients{
-    background-color: rgba(17,54,74, 0.82);
-    padding: 5px;
-    border-left: #4f92ff solid 10px;
-    padding-bottom: 23px;
-}
-
-.my-margin-for-client{
-    background-color: rgba(17,54,74, 0.82);
-    padding: 5px;
-    border-left: #f0ad4e solid 10px;
-    padding-bottom: 23px;
-}
-
-/*for borrow*/
-.header{
-    border-top: solid 2px #4f92ff;
-}
-.container-for-picture{
-    background-image: url(https://www.homezines.com/wp-content/uploads/2018/04/Choose-the-Right-Car.png);
-    background-position: 100% ;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 200px;
-}
-.main-container-borrow{
-    background-image: url(http://u-news.com.ua/uploads/posts/2018-03/1522227170_v.jpg);
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100% ;
-    height: 900px;
-    border-left: white solid 5px;
-    border-bottom: white solid 5px;
-    border-top: white solid 5px;
-    padding: 0px;
-    margin: 0px;
-}
-.container-for-main-filter{
-    padding-left: 20px;
-}
-.container-for-free-car{
-    padding-left: 20px;
-}
-
-.left-side-container-borrow{
-    padding: 0px;
-    margin: 0px;
-    border-left: solid 10px white;
-    border-top: solid 5px white;
-}
-.container-for-filter{
-    background-image: url(https://static1.st8fm.com/en_US/content_pages/1/pages/simple-insights/img/733-buy-smart-tips-at-car-dealerships-wide.jpg);
-    /*border-left: white solid 10px;*/
-    padding: 5px 20px 15px 20px;
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100%;
-    height: 300px;
-}
-
-.container-for-wishes{
-    background-image: url(https://www.vacation-lists.com/images/xroad-trip-packing-list700.jpg.pagespeed.ic.mVnCmdqhsa.jpg);
-    border-top: white solid 10px;
-    padding: 5px 20px 15px 20px;
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100%;
-    height: 300px;
-}
-.container-for-finished-trips{
-    background-image: url(https://cdn.cheapism.com/images/121516_best_road_trip_ideas_slide_0_fs.max-784x410.jpg);
-    border-top: white solid 10px;
-    padding: 5px 20px 15px 20px;
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100%;
-    height: 300px;
-    border-bottom: white solid 10px;
-}
-
-.my-finished-trips-for-borrow{
-    background-color: rgba(17,54,74, 0.82);
-    padding: 10px;
+.footer{
+    background-color: #563d7c;
+    padding: 40px 10%;
     color: white;
-    border-left: rgba(240,173,78,1) solid 10px;
-    margin: 5px 20px 10px 5px;
 }
+
+.info-about-driver-or-car {
+    background-color: white;
+    border: #b39898 solid 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.container-for-info-about-driver-or-car{
+    background-color: #e9ebee;
+    padding: 10px;
+    margin: 10px -10px 0px 10px;
+}
+
+
+
+
+
+

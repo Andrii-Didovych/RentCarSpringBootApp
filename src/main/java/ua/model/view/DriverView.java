@@ -28,21 +28,6 @@ public class DriverView {
 
     private LocalDate experienceBegan;
 
-
-    public DriverView(Integer id, String name, String surname, String phone,
-                      Integer countOfTrips, String placeOfBirth, LocalDate dateOfBirth,
-                      LocalDate experienceBegan) {
-        DateConverterImpl converter = new DateConverterImpl();
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.age = converter.periodOfTimeFromEnteredYear(dateOfBirth);
-        this.experience = converter.periodOfTimeFromEnteredYear(experienceBegan);
-        this.countOfTrips = countOfTrips;
-        this.placeOfBirth = placeOfBirth;
-    }
-
     public DriverView(Integer id, String name, String surname, String phone, String photo,
                       Integer countOfTrips, String placeOfBirth, LocalDate dateOfBirth,
                       LocalDate experienceBegan) {

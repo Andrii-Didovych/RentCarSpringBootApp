@@ -44,6 +44,7 @@ public class UserServiceImpl  implements UserService {
         driver.setDateOfBirth(LocalDate.of(1111,11,11));
         driver.setExperienceBegan(LocalDate.of(1111,11,11));
         driver.setPlaceOfBirth(repository.findCityByNameRepository(1));
+        driver.setPhotoURL(MyGlobalVariable.DEFAULT_PHOTO_OF_DRIVER);
         user.setDriver(driver);
         driver.setUser(user);
         repository.save(user);

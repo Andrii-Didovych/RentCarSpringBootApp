@@ -48,7 +48,14 @@
                 <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
-                <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                <li><a class="nav-link dropdown-toggle" href="/profile" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/profile">See profile</a>
+                        <a class="dropdown-item" href="/edit">Edit</a>
+                    </div>
+                </li>
                 <form:form action="/logout">
                     <a><button class="my-button-like-link"><span class="glyphicon glyphicon-log-in"></span> Logout</button></a>
                 </form:form>

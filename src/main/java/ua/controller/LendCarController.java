@@ -6,10 +6,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.entity.InfoAboutRent;
 import ua.entity.enums.Chauffeur;
+import ua.entity.enums.Status;
 import ua.model.request.CarRequest;
 import ua.model.request.LendCarRequest;
 import ua.model.view.OrderView;
+import ua.service.BorrowService;
 import ua.service.CarService;
+import ua.service.DriverService;
 import ua.service.RentService;
 
 import javax.validation.Valid;
@@ -21,10 +24,12 @@ public class LendCarController {
 
     private RentService service;
 
-    public LendCarController( RentService service) {
-        this.service = service;
-    }
+    private DriverService driverService;
 
+    public LendCarController(RentService service, DriverService driverService) {
+        this.service = service;
+        this.driverService = driverService;
+    }
 
     @ModelAttribute("car")
     public LendCarRequest getForm() {
@@ -33,6 +38,7 @@ public class LendCarController {
 
     @GetMapping
     public String show(Model model, Principal principal) {
+        model.addAttribute("idOfAuthorizedDriver", driverService.findIdOfDriverByEmail(principal.getName()));
         model.addAttribute("chauffeurs", Chauffeur.values());
         model.addAttribute("cities", service.findAllCities());
         model.addAttribute("finishedOrders", service.findFinishedOrders(principal.getName()));
@@ -41,6 +47,10 @@ public class LendCarController {
             model.addAttribute("particularOrder", particularOrder);
             model.addAttribute("clients", service.findAllClients(particularOrder.getId()));
             model.addAttribute("reservedOrder", service.findReservedOrder(particularOrder.getId()));
+            String message;
+            if(particularOrder.getStatus().equals(Status.COMPLETED)){ message = "Waiting for complete of client";}
+            else message = "Trip is continuing";
+            model.addAttribute("message", message);
         }
         return "lend";
     }

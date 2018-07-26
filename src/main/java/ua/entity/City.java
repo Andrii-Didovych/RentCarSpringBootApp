@@ -1,13 +1,14 @@
 package ua.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "city")
+@Table(name = "city",  indexes = @Index(columnList = "name"))
 public class City extends AbstractEntityName {
 
     @OneToMany(mappedBy = "placeOfBirth")
