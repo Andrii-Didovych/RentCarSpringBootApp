@@ -1,4 +1,5 @@
 package ua.model.view;
+import ua.entity.City;
 import ua.entity.enums.Chauffeur;
 import ua.entity.enums.Status;
 import java.math.BigDecimal;
@@ -29,7 +30,7 @@ public class OrderView {
 
     private String brand;
 
-    private String Model;
+    private String model;
 
     private String photoOfDriver;
 
@@ -47,7 +48,7 @@ public class OrderView {
         this.name = name;
         this.surname = surname;
         this.brand = brand;
-        Model = model;
+        this.model = model;
         this.photoOfDriver = photoOfDriver;
         this.photoOfCar = photoOfCar;
     }
@@ -98,11 +99,11 @@ public class OrderView {
     }
 
     public String getModel() {
-        return Model;
+        return model;
     }
 
     public void setModel(String model) {
-        Model = model;
+        this.model = model;
     }
 
     public String getPhotoOfDriver() {

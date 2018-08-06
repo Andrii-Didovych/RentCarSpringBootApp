@@ -32,8 +32,9 @@ body{
 
 .footer{
     background-color: #563d7c;
-    padding: 40px 10%;
+    padding: 10px;
     color: white;
+    text-align: right;
 
 }
 

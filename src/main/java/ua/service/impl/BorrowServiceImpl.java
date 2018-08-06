@@ -1,11 +1,15 @@
 package ua.service.impl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ua.converter.DateConverter;
 import ua.entity.Driver;
 import ua.entity.InfoAboutRent;
 import ua.entity.enums.Status;
+import ua.filter.CarFilter;
 import ua.model.view.OrderView;
+import ua.repository.BorrowRepository;
 import ua.repository.RentRepository;
 import ua.service.BorrowService;
 import java.util.List;
@@ -16,13 +20,26 @@ public class BorrowServiceImpl implements BorrowService {
 
     private final RentRepository repository;
 
-    public BorrowServiceImpl(RentRepository repository, DateConverter converter) {
+    private final BorrowRepository borrowRepository;
+
+    public BorrowServiceImpl(RentRepository repository, BorrowRepository borrowRepository) {
         this.repository = repository;
+        this.borrowRepository = borrowRepository;
     }
 
     @Override
-    public List<OrderView> findAllFreeCars(Integer id) {
-        return repository.findAllFreeCars(id, Status.ACTIVE);
+    public List<String> findAllCities() {
+        return repository.findAllCities(MyGlobalVariable.NOT_SELECTED);
+    }
+
+    @Override
+    public List<String> findAllBrands() {
+        return repository.findAllBrands(MyGlobalVariable.NOT_SELECTED);
+    }
+
+    @Override
+    public Page<OrderView> findAllFreeCars(Integer id, Pageable pageable, CarFilter filter) {
+        return borrowRepository.findAllFreeCars(id, pageable, filter);
     }
 
     @Override

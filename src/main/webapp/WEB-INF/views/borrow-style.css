@@ -4,8 +4,7 @@
 .main-container-borrow{
     background-color: rgba(91,71,121, 0.6);
     padding: 0px;
-    padding-top: 500px;
-    height: 1520px;
+    /*height: 1520px;*/
 }
 .container-for-filter{
     background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
@@ -76,15 +75,13 @@
     width: 90%;
 }
 
-.my-footer{
-    background-color: #563d7c;
-    height: 100px;
-    margin-top: 10px;
-    margin-right: -10px;
-    padding: 40px 10%;
-    color: white;
-}
+
 .container {
     margin: 0px;
     padding: 0px;
+}
+
+.filler-form-for-borrow{
+    height: 500px;
+    padding: 50px 10px 10px 10px;
 }
