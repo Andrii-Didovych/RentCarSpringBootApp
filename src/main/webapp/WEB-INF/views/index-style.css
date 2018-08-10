@@ -24,7 +24,7 @@ html, body{
     background-color: #f0ad4e;
     height: 100%;
 }
-
+/*--------------------------*/
 .text-left > .button-go-to > a {
     border-radius: 2px;
     background-color: #563d7c;
@@ -44,6 +44,7 @@ html, body{
 .button-go-to {
     margin-top: 20px;
 }
+/*--------------------------------*/
 .left .main-text {
     text-align: right;
 }
@@ -56,11 +57,12 @@ html, body{
     font-size: 200%;
     font-family: Arial;
 }
-
+/*----------------------------------*/
 .text-right, .text-left {
     font-family: Arial;
     font-size: 120%;
 }
+/*-------------------------------*/
 .my-button-like-link {
     background:none!important;
     color:inherit;
@@ -80,7 +82,6 @@ html, body{
     color: #f0ad4e;
     padding: 5px;
 }
-
 /*---------------------*/
  .dropdown {
     font-size: 20px;
@@ -89,8 +90,6 @@ html, body{
     font-family: Arial;
 
 }
-
-
 .right .dropdown-content {
     display: none;
     position: absolute;
@@ -119,6 +118,7 @@ html, body{
 .right .dropdown-content>div:hover > a{
     color: #563d7c;
 }
+/*----------------------------------*/
 .right-nav {
     margin-top: 5px;
     margin-bottom: 30%;
@@ -134,11 +134,7 @@ html, body{
     background-color: #563d7c;
     color: #f0ad4e;
 }
-
-
 /*--------------------------------------*/
-
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -147,31 +143,26 @@ html, body{
     padding: 3px;
     color: #563d7c;
 }
-
 .dropdown:hover {
     cursor: pointer;
 }
-
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
 .dropdown-content > div {
     padding: 3px 5px;
 }
-
 .dropdown-content > div:hover {
     background-color: #563d7c;
 }
-
 .dropdown-content > div > a {
     color: #563d7c;
     text-decoration: none;
 }
-
 .dropdown-content > div:hover > a {
     color: #f0ad4e;
 }
+/*------------------------------*/
 .left-nav {
     margin-top: 5px;
     text-align: left;
@@ -191,7 +182,6 @@ html, body{
     background-color: #f0ad4e;
     padding: 5px;
 }
-
 /*------------------------------------*/
 @media screen and (min-width: 1025px) {
     .container{
@@ -218,8 +208,6 @@ html, body{
     .left:hover .main-text {
         color: #f0ad4e;
     }
-
-
     .left:hover .text-left {
         opacity: 1;
         transition-duration: 1s;
@@ -227,7 +215,6 @@ html, body{
         color: #f0ad4e;
         padding: 0px 30px 0 0;
     }
-
     .right:hover .text-right {
         opacity: 1;
         transition-duration: 1s;
@@ -238,9 +225,6 @@ html, body{
     .text-left, .text-right {
         opacity: 0;
     }
-
-    /*------------------------*/
-
     .text-left > .button-go-to > a:hover {
         border-radius: 2px;
         background-color: #f0ad4e;
@@ -248,7 +232,6 @@ html, body{
         padding: 5px;
         color: #563d7c;
     }
-
     .text-right > .button-go-to > a:hover {
         border-radius: 2px;
         background-color: #563d7c;
@@ -256,46 +239,34 @@ html, body{
         padding: 5px;
         color: #f0ad4e;
     }
-
-    /*---------------------------------*/
-
     .left:hover .left-nav > a {
         text-decoration: none;
         font-size: 20px;
         padding: 6px 5px;
         opacity: 1;
     }
-
-
-    /*-------------------------------*/
-
-
     .right:hover .right-nav > a{
         text-decoration: none;
         font-size: 20px;
         padding: 5px;
         opacity: 1;
     }
-
-
-    /*--------------------------------------*/
     .left:hover .dropdown {
         opacity: 1;
     }
     .right:hover .my-button-like-link{
         opacity: 1;
     }
-    /*-------------------------------------*/
-
     .right:hover .dropdown{
         opacity: 1;
     }
 }
 
-
-
-
 @media screen and (max-width: 1024px){
+    .container{
+        display: flex;
+        min-height: 420px;
+    }
     .left {
         width: 50%;
         height: 100%;
@@ -305,10 +276,6 @@ html, body{
         width: 50%;
         height: 100%;
         background-color: #f0ad4e;
-    }
-    .container{
-        display: flex;
-        min-height: 420px;
     }
     .text-left{
         text-align: right;
