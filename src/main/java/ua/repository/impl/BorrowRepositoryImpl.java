@@ -21,6 +21,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 @Repository
 public class BorrowRepositoryImpl implements BorrowRepository {
 
@@ -53,6 +54,7 @@ public class BorrowRepositoryImpl implements BorrowRepository {
         Root<Driver> root = cq.from(Driver.class);
         return em.createQuery(cq.where(cb.equal(root.get(Driver_.id), id))).getSingleResult();
     }
+
     private List<Integer> getIdsOfOrders(Integer id){
         List<Integer> integers = new ArrayList<>();
         for (InfoAboutRent rent: getActiveDriver(id).getListOfInfoAboutCar()) {

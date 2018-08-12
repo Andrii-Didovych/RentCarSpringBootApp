@@ -3,7 +3,6 @@ package ua.repository.impl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.support.PageableExecutionUtils;
-import org.springframework.stereotype.Repository;
 import ua.converter.DateConverter;
 import ua.entity.*;
 import ua.entity.enums.*;
@@ -75,7 +74,6 @@ private static class PredicateBuilder{
 
         final Join<InfoAboutRent, Car> carJoin;
 
-
     public PredicateBuilder(CarFilter filter, Root<InfoAboutRent> root, CriteriaBuilder cb, DateConverter converter, Join<InfoAboutRent, Car> carJoin) {
         this.filter = filter;
         this.root = root;
@@ -89,6 +87,7 @@ private static class PredicateBuilder{
             predicates.add(cb.ge(root.get(InfoAboutRent_.pricePerDay), new BigDecimal(filter.getMinPrice())));
         }
     }
+
     void filterByMaxPrice() {
         if (!filter.getMaxPrice().isEmpty()) {
             predicates.add(cb.le(root.get(InfoAboutRent_.pricePerDay), new BigDecimal(filter.getMaxPrice())));
