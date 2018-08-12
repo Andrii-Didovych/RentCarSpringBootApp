@@ -24,7 +24,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light  " style="background-color: #563d7c; border-radius: 0px; margin: 0px; " >
-    <a class="navbar-brand " href="/"><span style="color: white; font-size: 20px; font-family: Arial">RentCar</span></a>
+    <a class="navbar-brand " href="/"><span style="color: white; font-size: 20px; font-family: Arial; color: #f0ad4e" >RentCar</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,20 +32,20 @@
         <ul class="navbar-nav">
             <sec:authorize access="isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link" href="/lend"><span style="color: white; font-size: 16px">Lend</span></a>
+                    <a class="nav-link" href="/lend"><span style="color: #f0ad4e; font-size: 16px">Lend</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/borrow"><span style="color: white; font-size: 16px">Borrow</span></a>
+                    <a class="nav-link" href="/borrow"><span style="color: #f0ad4e; font-size: 16px">Borrow</span></a>
                 </li>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/admin" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span style="color: white; font-size: 16px">Admin</span>
+                        <span style="color: #f0ad4e; font-size: 16px">Admin</span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/admin/brand">Brand</a>
-                        <a class="dropdown-item" href="/admin/city">City</a>
+                    <div class="dropdown-menu" style="background-color: #f0ad4e;" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" style="color: #563d7c;" href="/admin/brand"><b>Brand</b></a>
+                        <a class="dropdown-item" style="color: #563d7c;" href="/admin/city"><b>City</b></a>
                     </div>
                 </li>
             </sec:authorize>
@@ -58,11 +58,11 @@
 
             <sec:authorize access="isAuthenticated()">
                 <li><a class="nav-link dropdown-toggle" style="background-color: #563d7c;" href="/profile" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span style="color: white; font-size: 16px">Profile</span>
+                    <span style="color: #f0ad4e; font-size: 16px">Profile</span>
                 </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/profile/${idOfAuthorizedDriver}">See profile</a>
-                        <a class="dropdown-item" href="/edit">Edit</a>
+                    <div class="dropdown-menu" style="background-color: #f0ad4e;"  aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" style="color: #563d7c;" href="/profile/${idOfAuthorizedDriver}"><b>See profile</b></a>
+                        <a class="dropdown-item" style="color: #563d7c" href="/edit"><b>Edit</b></a>
                     </div>
                 </li>
                 <form:form action="/logout">
@@ -73,18 +73,18 @@
     </div>
 </nav>
     <div class="admin-container">
-        <div class="row" style="margin: 10px -15px 10px -15px">
+        <div class="row">
             <div class="col-5">
                 <%--@elvariable id="brand" type="java"--%>
                 <form:form class="form-inline" action="/admin/brand" method="post" modelAttribute="brand">
                     <custom:hiddenInputs excludeParams="name"/>
                     <div>
-                        <form:input path="name" class="form-control"  placeholder="Add name"/>
-                        <button type="submit" class="btn btn-sm btn-success" style="margin: 5px 0;">Save</button>
-                        <a href="/admin/brand/cancel<custom:allParams/>" class="btn btn-sm btn-info" style="padding-left:6px; padding-right: 6px">Cancel</a>
+                        <form:input path="name" class="form-control"  placeholder="Name"/>
+                        <button type="submit" class="btn btn-sm btn-success" style="margin: 5px 0; padding: 3px 8px;">Save</button>
+                        <a href="/admin/brand/cancel<custom:allParams/>" class="btn btn-sm btn-info" style="padding: 3px">Cancel</a>
                     </div>
-                    <div class="col-md-12" style="font-size: 14px; color: red; margin-left: 15px;">
-                        <form:errors path="name"/>
+                    <div style="font-size: 14px; color: #563d7c;  min-width: 300px; margin: 5px 0px;  text-align: left">
+                        <form:errors cssStyle="background-color: #f0ad4e; border-radius: 2px; padding: 3px;" path="name"/>
                     </div>
                 </form:form>
             </div>
@@ -94,7 +94,7 @@
                         <form:input path="search" class="form-control" cssStyle="margin: 0 5px 2px 0;" placeholder="Find by name"/>
                         <button type="submit" style="margin-right: 5px;" class="btn btn-primary btn-sm">Search</button>
                         <custom:size posibleSizes="1,2,5,10" size="${brands.size}"/>
-                        <span style="margin-left: 5px;">
+                        <span style="padding: 5px 5px 5px 0;">
                             <button class="btn btn-primary btn-sm "  data-toggle="dropdown">
                                 Sort
                                 <span class="caret"></span>
@@ -109,7 +109,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <table class="table table-bordered table-dark">
+                <table class="table table-dark">
                     <thead>
                         <tr>
                             <th scope="col" class="text-center">Brand</th>
@@ -131,15 +131,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 text-center" style="height: 10px">
+            <div class="col-12 text-center" style="height: 10px; padding-bottom: 100px;">
                 <custom:pageable page="${brands}"/>
             </div>
         </div>
     </div>
-    <div class="footer">
-        <a href="#"><img src="http://www.aphi.nz/img/linkedin.png" style="height: 40px; border-radius: 4px; border: 1px solid white; margin: 5px 0px;"></a>
-        <a href="#"><img src="http://www.jmkxyy.com/find-me-on-facebook-icon/find-me-on-facebook-icon-11.jpg" style="height: 40px; border-radius: 4px; border: 1px solid white; margin: 5px 0px;"></a>
-        <a href="#"><img src="https://www.modmy.com/sites/modmy.com/files/styles/large/public/article-images/2017/08/github-app-button.png?itok=ONaR9O8z" style="height: 42px; margin: 5px opx;"></a>
-    </div>
+<div class="footer">
+    <a target="_blank" href="https://www.linkedin.com/in/andrii-didovych/"><img src="http://www.aphi.nz/img/linkedin.png" style="height: 40px; border-radius: 4px; border: 1px solid white;"></a>
+    <a target="_blank" href="https://www.facebook.com/profile.php?id=100008114774126"><img src="http://www.jmkxyy.com/find-me-on-facebook-icon/find-me-on-facebook-icon-11.jpg" style="height: 40px; border-radius: 4px; border: 1px solid white; "></a>
+    <a target="_blank" href="https://github.com/Andrii-Didovych/RentCarSpringBootApp"><img src="https://www.modmy.com/sites/modmy.com/files/styles/large/public/article-images/2017/08/github-app-button.png?itok=ONaR9O8z" style="height: 42px;"></a>
+</div>
 </body>
 </html>

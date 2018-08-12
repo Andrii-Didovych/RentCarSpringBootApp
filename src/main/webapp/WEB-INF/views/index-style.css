@@ -69,7 +69,7 @@ html, body{
     /*border is optional*/
     cursor: pointer;
     color: #563d7c;
-    font-size: 20px;
+    font-size: 18px;
     opacity: 0;
 }
 .my-button-like-link>b{
@@ -82,9 +82,9 @@ html, body{
 }
 /*---------------------*/
  .dropdown {
-    font-size: 20px;
+    font-size: 18px;
     opacity: 0;
-    margin: 11px 5px 6px 0;
+    margin: 13px 5px 6px 0;
     font-family: Arial;
 }
 .right .dropdown-content {
@@ -125,6 +125,11 @@ html, body{
 }
 .right-nav > a {
     opacity: 0;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 6px;
+    color: #563d7c;
+
 }
 .right .right-nav > a:hover {
     padding: 5px;
@@ -185,11 +190,11 @@ html, body{
         color: #f0ad4e;
     }
     .container:hover > .left {
-        color: #75373700;
-        background-color: #f0ad4e54;
+        color: rgba(117, 55, 55, 0);
+        background-color: rgba(240, 173, 78, 0.32941176470588235);
     }
     .left:hover + .right {
-        background-color: #563d7c63;
+        background-color: rgba(86, 61, 124, 0.38823529411764707);;
     }
     .container > .left:hover {
         background-color: #563d7c;
@@ -233,13 +238,13 @@ html, body{
     .left:hover .left-nav > a {
         text-decoration: none;
         font-size: 20px;
-        padding: 6px 5px;
+        padding: 5px 5px;
         opacity: 1;
     }
     .right:hover .right-nav > a{
         text-decoration: none;
-        font-size: 20px;
-        padding: 5px;
+        font-size: 18px;
+        padding: 6px;
         opacity: 1;
     }
     .left:hover .dropdown {
@@ -287,6 +292,9 @@ html, body{
         opacity: 1;
     }
     .left-nav>a {
+        opacity: 1;
+    }
+    .right-nav>a{
         opacity: 1;
     }
 }

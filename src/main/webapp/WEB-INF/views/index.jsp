@@ -68,7 +68,7 @@
                 <b>you can find a car<br>which you want<br>on this site</b>
                 <sec:authorize access="isAuthenticated()">
                     <div class="button-go-to">
-                        <a href="/#"><b>find a car</b></a>
+                        <a href="/borrow"><b>find a car</b></a>
                     </div>
                 </sec:authorize>
                 <sec:authorize access="isAnonymous()">
