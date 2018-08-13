@@ -1,6 +1,5 @@
 package ua.converter;
 
-import com.sun.istack.internal.Nullable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import ua.entity.Brand;
@@ -15,7 +14,6 @@ public class BrandConverter implements Converter<String, Brand>{
         this.repository = repository;
     }
 
-    @Nullable
     @Override
     public Brand convert(String s) {
         return repository.findByName(s);
