@@ -35,8 +35,7 @@ public class UserServiceImpl  implements UserService {
         User user = new User();
         user.setEmail(request.getEmail());
         user.setPassword(encoder.encode(request.getPassword()));
-        if (repository.findAll().isEmpty())user.setRole(Role.ROLE_ADMIN);
-        else user.setRole(Role.ROLE_DRIVER);
+        user.setRole(Role.ROLE_DRIVER);
         Driver driver = new Driver();
         driver.setName(request.getName());
         driver.setSurname(request.getSurname());
