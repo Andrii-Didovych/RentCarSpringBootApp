@@ -12,10 +12,13 @@ import java.util.List;
 @Table(name = "info_about_rent")
 public class InfoAboutRent extends AbstractEntity {
 
+    @Column(name = "price_per_day")
     private BigDecimal pricePerDay;
 
+    @Column(name = "period_of_rent_from")
     private LocalDate periodOfRentFrom;
 
+    @Column(name = "period_of_rent_to")
     private LocalDate periodOfRentTo;
 
     @ManyToOne(fetch = FetchType.LAZY)
