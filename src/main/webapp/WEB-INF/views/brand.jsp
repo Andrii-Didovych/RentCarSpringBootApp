@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">.
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -66,76 +66,87 @@
                     </div>
                 </li>
                 <form:form action="/logout">
-                    <a><button class="my-button-like-link"><span class="glyphicon glyphicon-log-in"></span> Logout</button></a>
+                    <span>
+                        <a><button class="my-button-like-link">Logout</button></a>
+                    </span>
                 </form:form>
             </sec:authorize>
         </ul>
     </div>
 </nav>
-    <div class="admin-container">
-        <div class="row">
-            <div class="col-5">
-                <%--@elvariable id="brand" type="java"--%>
-                <form:form class="form-inline" action="/admin/brand" method="post" modelAttribute="brand">
-                    <custom:hiddenInputs excludeParams="name"/>
-                    <div>
-                        <form:input path="name" class="form-control"  placeholder="Name"/>
-                        <button type="submit" class="btn btn-sm btn-success" style="margin: 5px 0; padding: 3px 8px;">Save</button>
-                        <a href="/admin/brand/cancel<custom:allParams/>" class="btn btn-sm btn-info" style="padding: 3px">Cancel</a>
-                    </div>
-                    <div style="font-size: 14px; color: #563d7c;  min-width: 300px; margin: 5px 0px;  text-align: left">
-                        <form:errors cssStyle="background-color: #f0ad4e; border-radius: 2px; padding: 3px;" path="name"/>
-                    </div>
-                </form:form>
-            </div>
-            <div class="col-7">
-                <%--@elvariable id="filter" type="java"--%>
-                <form:form class="form-inline" cssStyle="float: right" action="/admin/brand" modelAttribute="filter" method="get">
-                        <form:input path="search" class="form-control" cssStyle="margin: 0 5px 2px 0;" placeholder="Find by name"/>
-                        <button type="submit" style="margin-right: 5px;" class="btn btn-primary btn-sm">Search</button>
+
+<div class="admin-container">
+    <div class="row" style="margin: 0px; ">
+        <div class="col-sm-6 col-xs-12" style="margin: 0px;">
+            <%--@elvariable id="brand" type="java"--%>
+            <form:form action="/admin/brand" method="post" modelAttribute="brand">
+                <custom:hiddenInputs excludeParams="name"/>
+                <div>
+                    <form:input path="name" class="form-control"  placeholder="Name"/>
+                    <button type="submit" class="btn btn-sm btn-success" style="margin: 5px 0; padding: 3px 8px;">Save</button>
+                    <a href="/admin/brand/cancel<custom:allParams/>" class="btn btn-sm btn-info" style="padding: 3px;">Cancel</a>
+                </div>
+                <div style="font-size: 14px; color: #563d7c;   margin: 5px 0px;  text-align: left">
+                    <form:errors cssStyle="background-color: #f0ad4e; border-radius: 2px; padding: 3px;" path="name"/>
+                </div>
+            </form:form>
+        </div>
+        <div class="col-sm-6 col-xs-12" style="margin: 0px;">
+            <%--@elvariable id="filter" type="java"--%>
+            <form:form  action="/admin/brand" modelAttribute="filter" method="get">
+                <form:input path="search" class="form-control" cssStyle="margin: 0 5px 5px 0;" placeholder="Find by name"/>
+                <span style="display: flex; flex-direction: row; align-items: right;">
+                    <span>
+                        <button type="submit" style="margin-right: 5px; padding-left: 7px; padding-right: 7px;" class="btn btn-primary btn-sm">Find</button>
+                    </span>
+                    <span style="padding-right: 5px; ">
                         <custom:size posibleSizes="1,2,5,10" size="${brands.size}"/>
-                        <span style="padding: 5px 5px 5px 0;">
-                            <button class="btn btn-primary btn-sm "  data-toggle="dropdown">
-                                Sort
-                                <span class="caret"></span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <custom:sort innerHtml="Name asc" paramValue="name"/>
-                                <custom:sort innerHtml="Name desc" paramValue="name,desc"/>
-                            </div>
-                        </span>
-                </form:form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center">Brand</th>
-                            <th scope="col" class="text-center">Options</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <a:forEach var="brand" items="${brands.content}">
-                            <tr>
-                                <td class="text-center">${brand.name}</td>
-                                <td class="text-center">
-                                    <a href="/admin/brand/update/${brand.id}<custom:allParams/>" class="btn btn-warning btn-sm">Update</a>
-                                    <a href="/admin/brand/delete/${brand.id}<custom:allParams/>" class="btn btn-danger btn-sm">Delete</a>
-                                </td>
-                            </tr>
-                        </a:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center" style="height: 10px; padding-bottom: 100px;">
-                <custom:pageable page="${brands}"/>
-            </div>
+                    </span>
+                    <span>
+                            <span>
+                                <button class="btn btn-primary btn-sm "  data-toggle="dropdown">
+                                    Sort
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <custom:sort innerHtml="Name asc" paramValue="name"/>
+                                    <custom:sort innerHtml="Name desc" paramValue="name,desc"/>
+                                </div>
+                            </span>
+                    </span>
+                </span>
+            </form:form>
         </div>
     </div>
+    <div class="row" style="margin: 0px">
+        <div class="col-12">
+            <table class="table  table-dark">
+                <thead >
+                <tr>
+                    <th scope="col" style="width: 50%" class="text-center">Brand</th>
+                    <th scope="col" style="width: 50%" class="text-center">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <a:forEach var="brand" items="${brands.content}">
+                    <tr>
+                        <td class="text-center">${brand.name}</td>
+                        <td class="text-center">
+                            <a href="/admin/brand/update/${brand.id}<custom:allParams/>"  class="btn btn-warning btn-sm" >Update</a>
+                            <a href="/admin/brand/delete/${brand.id}<custom:allParams/>" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                </a:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" style="margin: 0px; padding: 0px;">
+        <div class="col-12 text-center" style="height: 10px; padding-bottom: 100px;">
+            <custom:pageable page="${brands}"/>
+        </div>
+    </div>
+</div>
 <div class="footer">
     <a target="_blank" href="https://www.linkedin.com/in/andrii-didovych/"><img src="http://www.aphi.nz/img/linkedin.png" style="height: 40px; border-radius: 4px; border: 1px solid white;"></a>
     <a target="_blank" href="https://www.facebook.com/profile.php?id=100008114774126"><img src="http://www.jmkxyy.com/find-me-on-facebook-icon/find-me-on-facebook-icon-11.jpg" style="height: 40px; border-radius: 4px; border: 1px solid white; "></a>

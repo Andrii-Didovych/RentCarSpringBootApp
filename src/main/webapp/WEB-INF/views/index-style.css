@@ -136,6 +136,9 @@ html, body{
     background-color: #563d7c;
     color: #f0ad4e;
 }
+.no-dropdown{
+    display: none;
+}
 /*--------------------------------------*/
 .dropdown-content {
     display: none;
@@ -256,6 +259,7 @@ html, body{
     .right:hover .dropdown{
         opacity: 1;
     }
+
 }
 
 @media screen and (max-width: 1024px){
@@ -284,15 +288,41 @@ html, body{
 
     .my-button-like-link{
         opacity: 1;
+        margin-left: 5px;
+    }
+    .my-button-like-link>b:hover{
+        background-color: #f0ad4e;
+        color: #563d7c;
     }
     .right .dropdown{
-        opacity: 1;
+        display: none;
+    }
+    .no-dropdown{
+        display: block;
+        margin-bottom: 3px;
+    }
+    .no-dropdown >a{
+        text-decoration: none;
+        font-size: 18px;
+        color: #563d7c;
+
+    }
+    .left .no-dropdown >a{
+        text-decoration: none;
+        font-size: 18px;
+        color: #f0ad4e;
+
     }
     .dropdown{
-        opacity: 1;
+        display: none;
     }
     .left-nav>a {
         opacity: 1;
+        text-align: left;
+    }
+    .left .left-nav>a:hover{
+        background-color: #563d7c;
+        color: #f0ad4e;
     }
     .right-nav>a{
         opacity: 1;
@@ -315,7 +345,8 @@ html, body{
     }
     .container .main-text{
         text-align: center;
-        padding-top: 80px;
+        padding-top: 60px;
+        font-size: 150%;
     }
     .text-right>b, .text-left>b{
         display: none;

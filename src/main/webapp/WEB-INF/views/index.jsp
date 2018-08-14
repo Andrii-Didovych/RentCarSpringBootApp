@@ -4,6 +4,7 @@
 
 <!DOCTYPE  html>
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">.
     <title>RentCar</title>
     <style>
         <%@include file='index-style.css' %>
@@ -22,6 +23,10 @@
                                 <div><a href="/admin/city"><b>city</b></a></div>
                                 <div><a href="/admin/brand"><b>brand</b></a></div>
                             </div>
+                        </div>
+                        <div class="no-dropdown">
+                            <a href="/admin/city"><b>city</b></a>
+                            <a href="/admin/brand"><b>brand</b></a>
                         </div>
                     </sec:authorize>
                 </div>
@@ -59,6 +64,10 @@
                                     <div><a href="/profile/${idOfAuthorizedDriver}"><b>profile</b></a></div>
                                     <div><a href="/edit"><b>edit</b></a></div>
                                 </div>
+                            </div>
+                            <div class="no-dropdown">
+                                <a href="/profile/${idOfAuthorizedDriver}"><b>profile</b></a>
+                                <a href="/edit"><b>edit</b></a>
                             </div>
                     </sec:authorize>
                 </div>
