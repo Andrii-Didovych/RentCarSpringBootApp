@@ -1,0 +1,122 @@
+@charset "UTF-8";
+html, body{
+    height: 100%;
+    width: 100%;
+}
+.row{
+    margin: 0px;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.nav-right{
+    width: 100%;
+    text-align: right;
+}
+.nav-right>a {
+    color: #f0ad4e;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 5px;
+}
+.login-container {
+    height: 100%;
+    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 100%;
+    display: flex;
+    min-height: 300px;
+}
+.nav-bar{
+    display: none;
+}
+.left{
+    width: 50%;
+    background-color: #f0ad4e;
+    height: 100%;
+}
+.right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    background-color:rgba(240, 173, 78, 0.37);
+}
+.login-form{
+    width: 280px;
+    margin: auto;
+    background-color: #f0ad4e;
+    padding: 20px 10px;
+}
+.form-group{
+    margin: 5px;
+}
+.left-nav{
+    padding: 10px;
+}
+.left-nav>a {
+    text-decoration: none;
+    color: #563d7c;
+    font-size: 24px;
+    padding: 5px;
+}
+.left-nav>a:hover {
+    background-color: #563d7c;
+    color: #f0ad4e;
+}
+.text {
+    text-align: right;
+    margin: 25% 5px 0 0;
+}
+.text>b{
+    text-align: right;
+    font-size: 190%;
+    color: #563d7c;
+}
+.join-us-button>a {
+    text-decoration: none;
+    font-size: 120%;
+    color: #563d7c;
+    background-color: #f0ad4e;
+    padding: 5px;
+    border: #563d7c solid 3px;
+    float: right;
+    margin: 10px;
+}
+.join-us-button>a:hover{
+    background-color: #563d7c;
+    color: #f0ad4e;
+}
+@media screen and (max-width: 650px) {
+    .login-container{
+        flex-direction: column;
+    }
+    .right {
+        width: 100%;
+    }
+    .left{
+        display: none;
+    }
+    .nav-bar {
+        padding: 10px;
+
+        display: flex;
+        flex-direction: row;
+        background-color: #563d7c;
+        color: #f0ad4e;
+    }
+    .right-nav-xs{
+        width: 100%;
+        text-align: right;
+        padding: auto;
+    }
+    .nav-bar>div>a{
+        text-decoration: none;
+        color: #f0ad4e;
+    }
+    .fail-to-authorize> {
+        background-color: #563d7c;
+        color: #f0ad4e;
+    }
+}

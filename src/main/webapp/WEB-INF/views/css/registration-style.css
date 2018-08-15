@@ -1,0 +1,132 @@
+@charset "UTF-8";
+html, body{
+    height: 100%;
+    width: 100%;
+}
+.row .col-sm-9{
+    margin: 0px;
+    padding: 0px;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.nav-right{
+    width: 100%;
+    text-align: right;
+}
+.nav-right>a {
+    color: #f0ad4e;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 5px;
+}
+.login-container {
+    height: 100%;
+    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 100%;
+    display: flex;
+    min-height: 540px;
+}
+.nav-bar{
+    display: none;
+}
+.right{
+    width: 50%;
+    background-color: #563d7c;
+    height: 100%;
+}
+.left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(86, 61, 124, 0.46);
+}
+.login-form{
+    width: 300px;
+    margin: auto;
+    background-color:#563d7c;
+    padding: 20px 10px;
+}
+.form-group{
+    margin: 5px;
+}
+.left-nav{
+    padding: 10px;
+}
+.left-nav>a {
+    text-decoration: none;
+    color: #f0ad4e;
+    font-size: 24px;
+    padding: 5px;
+}
+.text{
+    margin: 35% 0 10px 10px;
+}
+.text>b{
+    font-size: 190%;
+    color: #f0ad4e;
+}
+.join-us-button>a {
+    text-decoration: none;
+    font-size: 120%;
+    color: #f0ad4e;
+    background-color: #563d7c;
+    padding: 5px;
+    border: #f0ad4e solid 3px;
+    margin: 10px;
+}
+.join-us-button>a:hover{
+    background-color: #f0ad4e;
+    color: #563d7c;
+}
+.col-form-label{
+    color: #563d7c;
+    font-size: 16px;
+}
+.border-input-form{
+    border: #f0ad4e 1px solid;
+}
+.error {
+    background-color: #f0ad4e;
+    color: #563d7c;
+    margin-left: 20px;
+    padding: 0 5px;
+}
+@media screen and (max-width: 650px) {
+    .left-nav{
+        display: none;
+    }
+    .login-container{
+        flex-direction: column;
+        min-height: 520px;
+    }
+    .left {
+        width: 100%;
+    }
+    .right{
+        display: none;
+    }
+    .nav-bar {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        background-color: #563d7c;
+        color: #f0ad4e;
+    }
+    .right-nav-xs{
+        width: 100%;
+        text-align: right;
+        padding: auto;
+    }
+    .nav-bar>div>a{
+        text-decoration: none;
+        color: #f0ad4e;
+    }
+    .login-form{
+        width: 280px;
+    }
+}
