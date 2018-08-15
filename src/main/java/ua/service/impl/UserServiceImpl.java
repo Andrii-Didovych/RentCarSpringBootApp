@@ -4,7 +4,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ua.converter.DateConverter;
 import ua.entity.*;
-import ua.entity.enums.Drive;
 import ua.entity.enums.Role;
 import ua.model.request.MainInfoRequest;
 import ua.model.request.PasswordRequest;
@@ -76,4 +75,8 @@ public class UserServiceImpl  implements UserService {
         repository.save(user);
     }
 
+    @Override
+    public Long numberOfUsers() {
+        return repository.count();
+    }
 }

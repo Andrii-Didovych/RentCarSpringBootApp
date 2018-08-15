@@ -10,9 +10,11 @@ public interface UserService {
 
     List<String> findAllCities();
 
-     void save(DriverRegistrationRequest request);
+    void save(DriverRegistrationRequest request);
 
     void changePassword(PasswordRequest request, String email);
 
     void changeMainInfo(MainInfoRequest mainInfoRequest, String email);
+
+    Long numberOfUsers();
 }

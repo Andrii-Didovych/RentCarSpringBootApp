@@ -14,10 +14,10 @@ public class DriverRegistrationRequest {
     @NotBlank(message = "Field cannot be empty!")
     private String email;
 
-    @Size(min = 2, max = 30, message = "Size of password should be within 3 and 30!")
+    @Size(min = 2, max = 30, message = "Password should be within 3 and 30!")
     private String password;
 
-    @Size(min = 2, max = 30, message = "Size of password should be within 3 and 30!")
+    @Size(min = 2, max = 30, message = "Password should be within 3 and 30!")
     private String repeatPassword;
 
     @NotBlank(message = "Field cannot be empty!")
@@ -26,6 +26,7 @@ public class DriverRegistrationRequest {
     @NotBlank(message = "Field cannot be empty!")
     private String surname;
 
+    @NotBlank(message = "Field cannot be empty!")
     @UniquePhone(message = "This phone has already created or has wrong format!")
     private String phone;
 

@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,145 +15,98 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-        <%@include file='main-style.css' %>
+        <%@include file='css/registration-style.css' %>
     </style>
-    <title>Sign Up</title>
+    <title>Login</title>
 </head>
-<body style="background-image: url(https://www.247carkeysolutions.co.uk/wp-content/uploads/2016/11/carkeys_shutterstock_74617219.jpg);">
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-    <a class="navbar-brand " href="/">RentCar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <sec:authorize access="isAuthenticated()">
-                <li class="nav-item">
-                    <a class="nav-link" href="/lend">Lend</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/borrow">Borrow</a>
-                </li>
-            </sec:authorize>
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/admin" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/admin/brand">Brand</a>
-                        <a class="dropdown-item" href="/admin/city">City</a>
-                    </div>
-                </li>
-            </sec:authorize>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <sec:authorize access="isAnonymous()">
-                <li><a href="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </sec:authorize>
-            <sec:authorize access="isAuthenticated()">
-                <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                <form:form action="/logout">
-                    <a><button class="my-button-like-link"><span class="glyphicon glyphicon-log-in"></span> Logout</button></a>
-                </form:form>
-            </sec:authorize>
-        </ul>
-    </div>
-</nav>
-    <div class="container">
-        <div class="row">
-            <div class=" col-sm-3"></div>
-            <div class="my-login-form my-registration-form  col-sm-8">
-            <%--@elvariable id="driver" type="java"--%>
-                <form:form  action="/registration" method="post" modelAttribute="driver">
-                    <div class=" row">
-                        <div class="col-3"></div>
-                        <div class="col-9" style="color: #07fff6">
-                            <form:errors path="email"/>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail" class="my-label-for-xs-resolution col-sm-3  col-form-label text-right" style="color: white; font-size: 15px;">Email</label>
-                        <div class="col-sm-9">
-                            <form:input path="email" type="email" class="form-control" id="inputEmail" placeholder="Input email"/>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-3"></div>
-                        <div class="col-9" style="color: #07fff6">
-                            <form:errors>${message}</form:errors>
-                            <form:errors path="password"/>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="my-label-for-xs-resolution col-sm-3  col-form-label text-right" style="color: white; font-size: 15px;">Password</label>
-                        <div class="col-sm-9 ">
-                            <form:password path="password" class="form-control" id="inputPassword"  placeholder="Input password"/>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-3"></div>
-                        <div class="col-9" style="color: #07fff6">
-                            <form:errors>${message}</form:errors>
-                            <form:errors path="repeatPassword"/>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="repeatPassword" class="my-label-for-xs-resolution col-sm-3  col-form-label text-right" style="color: white; font-size: 15px;">Repeat</label>
-                        <div class="col-sm-9 ">
-                            <form:password  path="repeatPassword" class="form-control" id="repeatPassword" placeholder="Repeate password"/>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-3"></div>
-                        <div class="col-9" style="color: #07fff6">
-                            <form:errors path="name"/>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputName" class="my-label-for-xs-resolution col-sm-3  col-form-label text-right" style="color: white; font-size: 15px;">Name</label>
-                        <div class="col-sm-9 ">
-                             <form:input path="name" class="form-control" id="inputName" placeholder="Input name"/>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-3"></div>
-                        <div class="col-9" style="color: #07fff6">
-                            <form:errors path="surname"/>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputSurname" class="my-label-for-xs-resolution col-sm-3  col-form-label text-right" style="color: white; font-size: 15px;">Surname</label>
-                        <div class="col-sm-9 ">
-                            <form:input path="surname" class="form-control" id="inputSurname" placeholder="Input surname"/>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-3"></div>
-                        <div class="col-9" style="color: #07fff6">
-                            <form:errors path="phone"/>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPhone" class="my-label-for-xs-resolution col-sm-3  col-form-label text-right" style="color: white; font-size: 15px;">Phone</label>
-                        <div class="col-sm-9 ">
-                            <form:input type="phone" path="phone" class="form-control" id="inputPhone"  placeholder="Input phone"/>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class=" col-sm-12">
-                            <button type="submit" class="btn btn-success my-button-float-right">Sign Up</button>
-                        </div>
-                    </div>
-                </form:form>
-            </div>
+<body>
+<div class="login-container">
+    <div class="nav-bar">
+        <div class="left-nav-xs">
+            <a href="/"><b style="font-size: 20px;">RentCar</b></a>
+        </div>
+        <div class="right-nav-xs">
+            <a href="/login">Login</a>
         </div>
     </div>
+    <div class="left">
+        <div class="left-nav">
+            <a href="/"><b>RentCar</b></a>
+        </div>
+        <div class="login-form">
+            <%--@elvariable id="driver" type="java"--%>
+            <form:form  action="/registration" method="post" modelAttribute="driver">
+                <div class=" row">
+                    <div class="error">
+                        <form:errors path="email"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <form:input path="email" type="email" class="form-control border-input-form" id="inputEmail" placeholder="Input email"/>
+                </div>
+
+                <div class="row">
+                    <div class="error">
+                        <form:errors>${message}</form:errors>
+                        <form:errors path="password"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <form:password path="password" class="form-control border-input-form" id="inputPassword"  placeholder="Input password"/>
+                </div>
+
+                <div class="row">
+                    <div class="error">
+                        <form:errors>${message}</form:errors>
+                        <form:errors path="repeatPassword"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <form:password  path="repeatPassword" class="form-control border-input-form" id="repeatPassword" placeholder="Repeate password"/>
+                </div>
+
+                <div class="row">
+                    <div class="error">
+                        <form:errors path="name"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <form:input path="name" class="form-control border-input-form" id="inputName" placeholder="Input name"/>
+                </div>
+
+                <div class="row">
+                    <div class="error">
+                        <form:errors path="surname"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <form:input path="surname" class="form-control border-input-form" id="inputSurname" placeholder="Input surname"/>
+                </div>
+
+                <div class="row">
+                    <div class="error">
+                        <form:errors path="phone"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <form:input type="phone" path="phone" class="form-control border-input-form" id="inputPhone"  placeholder="Input phone"/>
+                </div>
+                <div class="form-group row" style="display: flex; flex-direction: row-reverse">
+                        <button type="submit" class="btn btn-success" style="border-radius: 5px; border: #da9c44;background-color: #f0ad4e; color: #563d7c; margin-top: 5px;">Register</button>
+                </div>
+            </form:form>
+        </div>
+    </div>
+    <div class="right">
+        <div class="text">
+            <b>
+                ${numberOfUser} people have already <br>signed up on our site,<br> use it right now!
+            </b>
+        </div>
+        <div class="join-us-button">
+            <a href="/login"><b>Login</b></a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

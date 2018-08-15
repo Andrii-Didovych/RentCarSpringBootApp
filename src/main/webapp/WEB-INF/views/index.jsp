@@ -4,10 +4,10 @@
 
 <!DOCTYPE  html>
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">.
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>RentCar</title>
     <style>
-        <%@include file='index-style.css' %>
+        <%@include file='css/index-style.css' %>
     </style>
 </head>
 <body>

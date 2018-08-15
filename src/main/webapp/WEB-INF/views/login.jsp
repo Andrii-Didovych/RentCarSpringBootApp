@@ -15,80 +15,59 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-        <%@include file='main-style.css' %>
+        <%@include file='css/login-style.css' %>
     </style>
     <title>Login</title>
 </head>
-<body style="background-image: url(https://www.247carkeysolutions.co.uk/wp-content/uploads/2016/11/carkeys_shutterstock_74617219.jpg);">
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-    <a class="navbar-brand " href="/">RentCar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <sec:authorize access="isAuthenticated()">
-                <li class="nav-item">
-                    <a class="nav-link" href="/lend">Lend</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/borrow">Borrow</a>
-                </li>
-            </sec:authorize>
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/admin" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Admin
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/admin/brand">Brand</a>
-                        <a class="dropdown-item" href="/admin/city">City</a>
-                    </div>
-                </li>
-            </sec:authorize>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <sec:authorize access="isAnonymous()">
-                <li><a href="/registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </sec:authorize>
-            <sec:authorize access="isAuthenticated()">
-                <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                <form:form action="/logout">
-                    <a><button class="my-button-like-link"><span class="glyphicon glyphicon-log-in"></span> Logout</button></a>
-                </form:form>
-            </sec:authorize>
-        </ul>
-    </div>
-</nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-1 col-sm-5 col-lg-6"></div>
-            <div class="my-login-form col-xs-10 col-sm-6 col-lg-4">
-                <form:form  action="/login" method="post" >
-                    <div class="form-group row">
-                        <c:if test="${param.fail}">
-                            <div class="fail-to-authorize">
-                                Fail to authorize
-                            </div>
-                        </c:if>
-                    </div>
-                    <div class="form-group row">
-                        <input name="login" class="form-control"  placeholder="Input email"/>
-                    </div>
-                    <div class="form-group row">
-                        <input type="password" name="password" class="form-control"  placeholder="Input password"/>
-                    </div>
-                    <div class="form-group row">
-                        <label><span style="color: aliceblue">Remember me</span>  <input type="checkbox" name="rememberMe"></label>
-                    </div>
-                    <div class="form-group row">
-                        <button type="submit" class="btn btn-success mb-2">Login</button>
-                        <a href="/registration" class="btn btn-info mb-2">Sign Up</a>
-                    </div>
-                </form:form>
+<body>
+<div class="login-container">
+        <div class="nav-bar">
+            <div class="left-nav-xs">
+                <a href="/"><b style="font-size: 20px;">RentCar</b></a>
+            </div>
+            <div class="right-nav-xs">
+                <a href="/registration">Register</a>
             </div>
         </div>
-    </div>
+        <div class="left">
+            <div class="left-nav">
+                <a href="/"><b>RentCar</b></a>
+            </div>
+            <div class="text">
+                <b>
+                ${numberOfUser} people have already <br>signed up on our site,<br> join us right now!
+                </b>
+            </div>
+            <div class="join-us-button">
+                <a href="/registration"><b>Register</b></a>
+            </div>
+        </div>
+        <div class="right">
+            <div class="login-form">
+                    <form:form  action="/login" method="post" >
+                        <div class="form-group row">
+                            <c:if test="${param.fail}">
+                                <div class="fail-to-authorize" style="background-color: #563d7c; color: #f0ad4e; padding:3px 5px;">
+                                    Fail to authorize
+                                </div>
+                            </c:if>
+                        </div>
+                        <div class="form-group row" style="border: #563d7c 1px solid; border-radius: 5px">
+                            <input name="login" class="form-control"  placeholder="Input email"/>
+                        </div>
+                        <div class="form-group row" style="border: #563d7c 1px solid; border-radius: 5px">
+                            <input type="password" name="password" class="form-control"  placeholder="Input password"/>
+                        </div>
+                        <div class="form-group row">
+                            <label for="remember" style="color: #563d7c; margin-right: 5px;">Remember me</label>
+                            <input id="remember" type="checkbox" name="rememberMe">
+                        </div>
+                        <div class="form-group row" style="display: flex; flex-direction: row-reverse">
+                            <button style="background-color: #563d7c; color: #f0ad4e; border: #da9c44 solid 1px;" type="submit" class="btn btn-success mb-2">Login</button>
+                        </div>
+                    </form:form>
+            </div>
+        </div>
+</div>
 </body>
 </html>

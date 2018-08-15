@@ -28,6 +28,7 @@ public class DriverRegistrationController {
     @GetMapping
     public String show(Model model) {
         model.addAttribute("cities", service.findAllCities());
+        model.addAttribute("numberOfUser", service.numberOfUsers());
         return "registration";
     }
 
