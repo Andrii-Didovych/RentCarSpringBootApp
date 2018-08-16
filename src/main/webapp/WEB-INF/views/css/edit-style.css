@@ -212,5 +212,6 @@ input[type='file']{
     }
     input[type='file']{
         margin-left: 0;
+        width: 180px;
     }
 }
