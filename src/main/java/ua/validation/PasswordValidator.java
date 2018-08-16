@@ -17,6 +17,6 @@ public class PasswordValidator implements ConstraintValidator<RepeatPassword, Dr
 
     @Override
     public boolean isValid(DriverRegistrationRequest request, ConstraintValidatorContext constraintValidatorContext) {
-        return request.getPassword().equals(request.getRepeatPassword());
+           return request.getPassword().equals(request.getRepeatPassword());
     }
 }

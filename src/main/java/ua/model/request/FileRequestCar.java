@@ -3,7 +3,7 @@ package ua.model.request;
 import org.springframework.web.multipart.MultipartFile;
 import ua.validation.annotation.CorrectFileSize;
 
-public class FileRequest {
+public class FileRequestCar {
     @CorrectFileSize
     private MultipartFile file;
 

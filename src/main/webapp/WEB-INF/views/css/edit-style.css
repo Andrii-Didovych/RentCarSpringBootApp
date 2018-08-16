@@ -1,0 +1,216 @@
+@charset "UTF-8";
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.my-button-like-link {
+    background:none!important;
+    color:inherit;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    cursor: pointer;
+    margin: 14px 10px 0 10px;
+    color: #f0ad4e;
+    font-size: 16px;
+}
+.edit-container {
+    margin: 0;
+    padding: 0;
+    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-attachment: fixed;
+    background-origin: border-box;
+    background-position: center center;
+    background-size: cover;
+}
+/*driver-info*/
+.edit-about-driver {
+    background-color: rgba(240, 173, 78, 0.46);
+    padding: 20px;
+    display: flex;
+}
+.edit-about-car{
+    background-color:rgba(86, 61, 124, 0.38);
+    padding: 20px;
+    display: flex;
+}
+.edit-about-driver-container {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+.photo-of-driver-or-car >img {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+}
+
+.info-about-driver-or-car {
+    background-color: #563d7c;
+    /*width: 300px;*/
+    padding: 10px;
+    margin: 0 10px 10px 10px;
+}
+.right-side{
+    width: 580px;
+}
+.edit-for-picture{
+    background-color:#563d7c;
+    margin: 10px 10px 10px 0;
+    padding: 10px;
+}
+.button-float-right{
+    padding: 3px 5px;
+    float: right;
+    background-color: #f0ad4e;
+    color: #563d7c;
+}
+.button-float-right:hover{
+    background-color: #da9c44;
+    color: #563d7c;
+}
+.header-of-block{
+    margin-bottom: 20px;
+}
+.header-of-block-text {
+    font-size: 16px;
+    color: #f0ad4e;
+}
+.my-edit-info-form{
+    background-color: #563d7c;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+}
+.label-input-form{
+    display: flex;
+    padding: 5px 0;
+}
+.label-form{
+    width: 30%;
+}
+.label-form>label{
+    float: right;
+    padding: 5px;
+    font-size: 14px;
+    color: #f0ad4e;
+}
+.input-form{
+    width: 70%;
+    border: #f0ad4e solid 1px;
+    border-radius: 5px;
+}
+.error{
+  background-color: #f0ad4e;
+    color:#563d7c;
+    margin-left: 30%;
+}
+.error *{
+    padding: 5px;
+}
+
+h4{
+    border-bottom: 1px solid #563d7c;
+    color: #f0ad4e;
+}
+h5{
+    color: #f0ad4e;
+    font-size: 15px;
+    padding-left: 20px;
+}
+.select-form>select{
+    height: 33px;
+}
+.footer {
+    background-color: #563d7c;
+    margin: auto;
+}
+.footer-content {
+    margin: auto;
+    text-align: right;
+    padding: 10px;
+}
+.footer-content img{
+    margin-bottom: 5px;
+}
+input[type='file']{
+    color:#f0ad4e;
+    font-size:14px;
+    cursor: pointer;
+    margin-left: 30%;
+}
+
+
+@media screen and (min-width: 951px){
+    .footer-content{
+        width: 900px;
+    }
+}
+@media screen and (max-width: 950px){
+
+    .edit-about-driver-container{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .left-side{
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+    }
+
+    .info-about-driver-or-car{
+       margin: 10px 0 0 0px;
+        width: 260px;
+    }
+
+    .photo-of-driver-or-car>img{
+        margin: 10px 10px 0 0px;
+    }
+
+    .footer-content{
+        text-align: center;
+    }
+
+}
+@media screen and (max-width: 620px){
+
+    .edit-about-driver-container{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .left-side {
+        display: flex;
+        flex-direction: column;
+    }
+    .info-about-driver-or-car{
+        margin-top: 10px;
+        width: 270px;
+    }
+    .right-side{
+        width: 270px;
+    }
+    .label-form{
+        display: none;
+    }
+    .input-form{
+        width: 100%;
+    }
+    .edit-for-picture{
+        margin: 10px 0 10px 0;
+    }
+    .photo-of-driver-or-car>img {
+        height: 270px;
+        width: 270px;
+        margin: 0;
+    }
+    .my-edit-info-form{
+        margin: 0 0 10px 0;
+    }
+    input[type='file']{
+        margin-left: 0;
+    }
+}

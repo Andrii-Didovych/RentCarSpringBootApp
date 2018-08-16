@@ -16,4 +16,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("select c from City c where c.id=?1")
     City findCityByNameRepository(int id);
+
+    @Query("select u.password from User u where u.email=?1")
+    String findPasswordOfAuthorizedUser(String name);
 }
