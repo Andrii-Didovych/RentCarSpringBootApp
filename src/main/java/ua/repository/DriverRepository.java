@@ -31,7 +31,7 @@ public interface DriverRepository extends JpaRepository<Driver,Integer> {
             "join c.driver d  where d.id =?1")
     CarView findCarViewByDriverId(Integer id);
 
-    @Query("select new ua.model.view.CommentView(c.text, c.date, r.id, s.id, s.name, s.surname, s.photoURL, d.photoOfCar)" +
-            "from Comment c join c.sender s join s.car d join c.receiver r where r.id=?1 order by c desc")
+    @Query("select new ua.model.view.CommentView(c.text, c.date, r.id, s.id, s.name, s.surname, s.photoURL)" +
+            "from Comment c join c.sender s join c.receiver r where r.id=?1 order by c desc")
     List<CommentView> findCommentsOfDriver(Integer id);
 }

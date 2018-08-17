@@ -56,7 +56,7 @@ public class RentServiceImpl implements RentService {
 //*****************methods of 'show method'*****************
     @Override
     public List<String> findAllCities() {
-        return repository.findAllCities();
+        return repository.findAllCitiesExceptFirst();
     }
 
     @Override

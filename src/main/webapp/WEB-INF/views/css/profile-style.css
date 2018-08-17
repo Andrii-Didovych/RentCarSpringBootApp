@@ -1,0 +1,273 @@
+@charset "UTF-8";
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: #563d7c;
+}
+.my-button-like-link {
+    background:none!important;
+    color:inherit;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    cursor: pointer;
+    margin: 14px 10px 0 10px;
+    color: #f0ad4e;
+    font-size: 16px;
+}
+.container-profile{
+    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
+    background-clip: border-box;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 100%;
+    min-height: 100%;
+}
+
+.container-profile-for-width{
+    max-width: 900px;
+    margin: auto;
+    padding: 10px 10px 20px 10px;
+    background-color: rgba(86, 61, 124, 0.45);
+}
+/*header*/
+.header {
+    height: 340px;
+    background-color: #563d7c;
+    border: 1px solid #563d7c;
+}
+.header-background{
+    background-image: url("https://s3.amazonaws.com/cars-bucket/${photoOfCar}");
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: 100%;
+    height: 300px;
+}
+.header-picture-xs{
+    display: none;
+}
+.header-background>img {
+    margin:80px 0 0 40px;
+    border: 5px solid #563d7c;
+    height: 250px;
+    width: 250px;
+}
+.header > h2{
+    text-align: right;
+    margin: 0px;
+    padding: 5px 15px;
+    color: #f0ad4e;
+}
+/*end header*/
+
+/*begin of info*/
+/*left*/
+.main{
+    display: flex;
+    flex-direction: row;
+}
+.left-side{
+    width: 40%;
+}
+.info-about-driver-or-car{
+    background-color: #563d7c;
+    padding: 0 10px;
+}
+.info-about-driver-or-car>*{
+    padding: 10px;
+}
+h4{
+    border-bottom: #f0ad4e 1px solid;
+    color: #f0ad4e;
+}
+h5{
+    color: #f0ad4e;
+    margin: 0px;
+}
+.info-about-driver-or-car h5{
+    padding: 5px 10px 10px 30px;
+}
+/*right*/
+/*comment-form*/
+.right-side {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.form-comment {
+    background-color: #563d7c;
+    margin: 10px 0px 0px 10px;
+
+}
+.input-form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+.input-form h4{
+    padding: 0 10px 10px 10px;
+}
+.button-of-comment{
+    text-align: right;
+    padding: 10px;
+}
+.button-of-comment>button{
+    background-color: #f0ad4e;
+    color: #563d7c;
+    border: 1px solid #da9c44;
+}
+.button-of-comment>button:hover {
+    background-color: #da9c44;
+    color: #563d7c;
+}
+.error{
+    background-color: #f0ad4e;
+    color: #563d7c;
+    margin: 10px 10px 0px 10px;
+}
+.error>*{
+    margin: 3px 10px;
+}
+/*comment-show*/
+.comment{
+    background-color: #563d7c;
+    margin: 10px 0 0 10px;
+    padding: 5px;
+}
+.container-for-header {
+    display: flex;
+    flex-direction: row;
+}
+.comment-background{
+    background-clip: border-box;
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: 100%;
+    height: 50px;
+    width: 150px;
+    margin: 5px 0 0 80px;
+    border-bottom-right-radius: 10px;
+}
+.comment-date {
+    width: 60%;
+    text-align: right;
+    margin: 5px;
+}
+.comment-inside{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    background-color: rgba(86, 61, 124, 0.5686274509803921);
+}
+.comment-inside>img{
+    margin-top: -5px;
+    margin-left: -80px;
+    width: 80px;
+    height: 80px;
+}
+.comment-text {
+    margin: 10px 0 0 90px;
+    background-color: #f0ad4e;
+    color: #563d7c;
+    padding: 5px 15px;
+    border-top-left-radius: 10px;
+}
+.name-and-surname{
+    margin: auto;
+    padding-left: 5px;
+    border: none;
+}
+.name-and-surname a {
+    text-decoration: none;
+    color: #ffd59a;
+    padding-right: 5px;
+}
+.footer {
+    background-color: #563d7c;
+    margin: auto;
+}
+.footer-content {
+    margin: auto;
+    text-align: right;
+    padding: 10px 5px 5px 10px;
+    width: 900px;
+}
+.footer-content img{
+    margin-bottom: 5px;
+
+}
+@media screen and (max-width: 920px){
+    .footer-content{
+        width: 100%;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 780px){
+    .my-button-like-link{
+        margin: 5px 0 0 0;
+    }
+    .header-background>img{
+        margin: 25px;
+        border: 2px solid #563d7c;
+        opacity: 0.8;
+    }
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+    .left-side{
+        display: flex;
+        width: 100%;
+    }
+    .info-about-driver-or-car{
+        margin-top: 10px;
+        width: 50%;
+    }
+    .left-side>*:nth-child(2){
+        margin-left: 10px;
+    }
+    .right-side{
+        width: 100%;
+        margin: 0px;
+    }
+    .form-comment{
+        margin: 10px 0px;
+    }
+    .comment{
+        margin: 0px 0px 10px 0 ;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .header{
+        height: 100%;
+    }
+    .header-background{
+        display: none;
+    }
+    .header-picture-xs{
+        display: block;
+        text-align: center;
+        padding: 10px 0px;
+    }
+    .header-picture-xs>img {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #f0ad4e;
+    }
+    .header h2{
+        text-align: center;
+    }
+    .left-side{
+        flex-direction: column;
+    }
+    .info-about-driver-or-car{
+        width: 100%;
+    }
+    .left-side>*:nth-child(2){
+        margin-left: 0px;
+    }
+}

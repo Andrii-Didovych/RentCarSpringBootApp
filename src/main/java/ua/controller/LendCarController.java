@@ -14,6 +14,7 @@ import ua.service.BorrowService;
 import ua.service.CarService;
 import ua.service.DriverService;
 import ua.service.RentService;
+import ua.service.impl.MyGlobalVariable;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -40,6 +41,7 @@ public class LendCarController {
     public String show(Model model, Principal principal) {
         model.addAttribute("idOfAuthorizedDriver", driverService.findIdOfDriverByEmail(principal.getName()));
         model.addAttribute("chauffeurs", Chauffeur.values());
+        model.addAttribute("missing", MyGlobalVariable.NOT_SELECTED);
         model.addAttribute("cities", service.findAllCities());
         model.addAttribute("finishedOrders", service.findFinishedOrders(principal.getName()));
         OrderView particularOrder = service.findParticularOrder(principal.getName());

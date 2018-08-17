@@ -1,80 +1,268 @@
 @charset "UTF-8";
-.container {
+html, body {
     margin: 0px;
     padding: 0px;
+    height: 100%;
+    width: 100%;
 }
-.container-for-lend {
+.my-button-like-link {
+    background:none!important;
+    color:inherit;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    cursor: pointer;
+    margin: 14px 10px 0 10px;
+    color: #f0ad4e;
+    font-size: 16px;
+}
+.main-container{
     background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-size: cover;
     background-position: 100%;
-    height: 500px;
-    padding: 0px;
+    min-height: 100%;
 }
-.my-lend-car{
-    padding: 7% 8%;
-    height: 500px;
-    background-color: rgba(58, 37, 39, 0.48);
-}
-
-.my-list-of-orders{
-    background-color: #f7ecec;
-    border-radius: 10px;
-    margin: 20px;
-    padding: 5px 20px 15px 20px;
-    color: black;
-}
-
-.my-form-for-particular-order{
-    background-image: url(https://www.vacation-lists.com/images/xroad-trip-packing-list700.jpg.pagespeed.ic.mVnCmdqhsa.jpg);
-    border-top: #c3b7d6 solid 10px;
-    padding: 0px;
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100%;
-    height: 500px;
-}
-
-.my-form-for-finished-orders{
-    background-image: url(https://cdn.cheapism.com/images/121516_best_road_trip_ideas_slide_0_fs.max-784x410.jpg);
-    border-top: #c3b7d6 solid 10px;
-    border-left: #c3b7d6 solid 10px;
-    padding: 0px;
-    background-attachment: scroll;
-    background-size: cover;
-    background-position: 100% ;
-    height: 500px;
-}
-
-.my-list-of-clients{
-    background-color: #ffffff00;
-    padding: 5px;
-}
-.my-margin-for-list-of-clients{
-    background-color: rgba(17,54,74, 0.82);
-    padding: 5px;
-    border-left: #4f92ff solid 10px;
-    padding-bottom: 23px;
-}
-
-.my-margin-for-client{
-    background-color: rgba(17,54,74, 0.82);
-    padding: 5px;
-    border-left: #f0ad4e solid 10px;
-    padding-bottom: 23px;
-}
-.my-particular-order{
-    background-color: rgba(17,54,74, 0.82);
+.container-for-width {
+    max-width: 900px;
+    background-color:rgba(86, 61, 124, 0.7);
+    margin: auto;
     padding: 10px;
-    color: white;
-    border-left: #4f92ff solid 10px;
-    margin: 5px 20px 10px 5px;
+}
+/*lend-container*/
+.lend-car{
+    height: 400px;
+}
+.form-for-inputs{
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+.form-for-inputs>*{
+    flex-basis: 18%;
+    margin: 5px;
+}
+label{
+    color: #f0ad4e;
+    font-size: 16px;
+}
+.form-control{
+    border: #f0ad4e 1px solid;
+}
+.lend-button{
+    margin: 5px 0;
+    text-align: right;
+    padding-right: 5px;
+}
+.lend-button>button {
+    padding: 5px;
+    color: #563d7c;
+    background-color: #f0ad4e;
+    border: 1px solid #da9c44 ;
+}
+.lend-button>button:hover {
+    background-color: #da9c44;
+    color: #563d7c;
+}
+.error{
+    background-color: #f0ad4e;
+    color: #563d7c;
+}
+.error>*{
+    margin: 5px;
+}
+.text-of-lend{
+    text-align: center;
+    color: #f0ad4e;
+    margin: 80px 0;
+}
+/*end lend container*/
+.container-for-particular-order{
+    background-color: #563d7c;
+    width: 100%;
+    box-sizing: border-box;
+}
+.header-of-order-container>h2{
+    color: #f0ad4e;
+    padding: 10px;
+}
+.list-of-clients-container{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    align-content: stretch;
+    flex-wrap: wrap;
+    padding-left: 10px;
+    height:240px;
+    overflow:auto;
+
 
 }
-
-.background-for-pictures-of-lend {
-    background-color: rgba(86, 61, 124, 0.31);
+.particular-order{
+    background-color: #f0ad4e;
+    margin: 10px;
+    padding: 10px;
+    color: #563d7c;
+}
+ .btn{
+    background-color: #563d7c;
+    color: #f0ad4e;
+    border: 1px solid #a292b9;
+}
+ .btn:hover{
+     background-color: #563d7c;
+ }
+.list-of-clients{
+    width: 48%;
+    background-color: #f0ad4e;
+    color: #563d7c;
+    padding: 5px;
+    margin: 0 10px 10px 0;
+}
+.list-of-clients>img{
+    width: 100px;
+    border: 1px solid #563d7c;
+    float: right;
+    display: block;
+}
+.list-of-clients h4 {
+    text-decoration: none;
+    margin: 5px;
+    color: #563d7c;
+}
+.list-of-clients h4>a{
+    text-decoration: none;
+    color: #563d7c;
+}
+.list-of-clients h5{
+    margin: 2px 10px;
+}
+.buttons{
+    text-align: right;
+    margin: -26px 103px 0 0;
+}
+.message {
+    background-color: #d28c2a;
+    margin: -5px -5px 5px -5px;
+    text-align: center;
+    padding: 3px;
+}
+.container-for-finished-trips{
+    background-color: #563d7c;
+    margin: 100px 0;
+    padding: 10px;
+}
+.finished-trips{
+    height:240px;
+    overflow:auto;
+}
+.container-for-finished-trips>.header-of-order-container>h2{
+    padding: 0px;
     margin: 0px;
-    padding: 5px 20px 15px 20px;
-    height: 490px;
+    margin-bottom: 15px;
+}
+.one-trip{
+    background-color: #f0ad4e;
+    padding: 15px;
+    color: #563d7c;
+    margin-bottom: 10px;
+}
+.footer {
+    background-color: #563d7c;
+    margin: auto;
+}
+.footer-content {
+    margin: auto;
+    text-align: right;
+    padding: 10px 5px 5px 10px;
+    width: 900px;
+}
+.footer-content img{
+    margin-bottom: 5px;
+
+}
+@media screen and (max-width: 920px){
+    .footer-content{
+        width: 100%;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 850px){
+    .list-of-clients{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 767px){
+
+    .form-for-inputs{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .form-for-inputs>*{
+        margin: 5px;
+        width: 60%;
+    }
+    .text-of-lend{
+        margin:0 0 40px 0;
+    }
+    .form-group{
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+    }
+    label{
+        width: 30%;
+    }
+    .error{
+        width: 80%;
+        margin: auto;
+    }
+    .lend-button {
+        width: 80%;
+        margin: auto;
+        padding: 5px 0px;
+    }
+    h2>b{
+        font-size: 24px;
+    }
+    h4>b{
+        font-size: 16px;
+    }
+    .my-button-like-link{
+        margin: 5px 0;
+    }
+    /*end lend*/
+}
+@media screen and (max-width: 480px){
+    label{
+        display: none;
+    }
+    .form-for-inputs{
+        width: 100%;
+    }
+    .form-group{
+        width: 100%;
+    }
+    .list-of-clients h4{
+        display: block;
+    }
+    h4{
+        display: none;
+    }
+    .lend-button{
+        width: 100%;
+    }
+    /*end lend*/
+    .buttons{
+        margin: 10px 0 0 0;
+    }
+}
+@media screen and (max-width: 330px){
+    .list-of-clients>img{
+        width: 80px;
+    }
 }

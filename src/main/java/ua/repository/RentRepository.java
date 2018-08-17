@@ -21,6 +21,9 @@ public interface RentRepository extends JpaRepository<InfoAboutRent,Integer> {
     @Query("select inf from InfoAboutRent inf join inf.car c join c.driver d join d.user u where u.email=?1 and inf.status=?2")
     InfoAboutRent checkIfOrderIsActive(String email, Status active);
 
+    @Query("select c.name from City c where c.id<>1")
+    List<String> findAllCitiesExceptFirst();
+
     @Query("select c.name from City c")
     List<String> findAllCities();
 
@@ -45,9 +48,9 @@ public interface RentRepository extends JpaRepository<InfoAboutRent,Integer> {
     @Query("select new ua.model.view.DriverView(d.id, d.name, d.surname, d.phone, d.photoURL, d.countOfTrips, p.name, d.dateOfBirth, d.experienceBegan)" +
             " from Driver d join d.placeOfBirth p join d.listOfInfoAboutCar inf where inf.id =?1 and (inf.status=?2 or inf.status = ?3)")
     List<DriverView> findReservedOrder(Integer id, Status reserved, Status completed);
-
     @Query("select d from Driver d where d.id=?1")
     Driver findOneDriver(Integer id);
+
     @Query("select o from InfoAboutRent o where o.id=?1")
     InfoAboutRent findParticularOrderById(Integer id);
 

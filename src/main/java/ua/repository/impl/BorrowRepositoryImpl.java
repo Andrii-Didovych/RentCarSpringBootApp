@@ -108,8 +108,8 @@ public class BorrowRepositoryImpl implements BorrowRepository {
         public void where(List<Integer> integers){
             specifications.add((root, query, cb)->cb.and(
                     cb.equal(root.get(InfoAboutRent_.status), Status.ACTIVE),
-                    cb.notEqual(driverJoin.get(Driver_.id),id),
-                    cb.not(root.get(InfoAboutRent_.id).in(integers))
+                    cb.notEqual(driverJoin.get(Driver_.id),id)
+//                    cb.not(root.get(InfoAboutRent_.id).in(integers))
             ));
         }
 

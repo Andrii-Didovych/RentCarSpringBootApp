@@ -19,13 +19,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
         <%@include file='lend-style.css' %>
-        <%@include file='main-style.css' %>
     </style>
     <title>Lend</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-light  " style="background-color: #563d7c; border-radius: 0px; margin: 0px; " >
-    <a class="navbar-brand " href="/"><span style="color: white; font-size: 20px; font-family: Arial">RentCar</span></a>
+    <a class="navbar-brand " href="/"><span style="color: white; font-size: 20px; font-family: Arial; color: #f0ad4e" >RentCar</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,20 +32,20 @@
         <ul class="navbar-nav">
             <sec:authorize access="isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link" href="/lend"><span style="color: white; font-size: 16px">Lend</span></a>
+                    <a class="nav-link" href="/lend"><span style="color: #f0ad4e; font-size: 16px">Lend</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/borrow"><span style="color: white; font-size: 16px">Borrow</span></a>
+                    <a class="nav-link" href="/borrow"><span style="color: #f0ad4e; font-size: 16px">Borrow</span></a>
                 </li>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/admin" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span style="color: white; font-size: 16px">Admin</span>
+                        <span style="color: #f0ad4e; font-size: 16px">Admin</span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/admin/brand">Brand</a>
-                        <a class="dropdown-item" href="/admin/city">City</a>
+                    <div class="dropdown-menu" style="background-color: #f0ad4e;" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" style="color: #563d7c;" href="/admin/brand"><b>Brand</b></a>
+                        <a class="dropdown-item" style="color: #563d7c;" href="/admin/city"><b>City</b></a>
                     </div>
                 </li>
             </sec:authorize>
@@ -59,73 +58,76 @@
 
             <sec:authorize access="isAuthenticated()">
                 <li><a class="nav-link dropdown-toggle" style="background-color: #563d7c;" href="/profile" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span style="color: white; font-size: 16px">Profile</span>
+                    <span style="color: #f0ad4e; font-size: 16px">Profile</span>
                 </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="/profile/${idOfAuthorizedDriver}">See profile</a>
-                        <a class="dropdown-item" href="/edit">Edit</a>
+                    <div class="dropdown-menu" style="background-color: #f0ad4e;"  aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" style="color: #563d7c;" href="/profile/${idOfAuthorizedDriver}"><b>See profile</b></a>
+                        <a class="dropdown-item" style="color: #563d7c" href="/edit"><b>Edit</b></a>
                     </div>
                 </li>
                 <form:form action="/logout">
-                    <a><button class="my-button-like-link"><span class="glyphicon glyphicon-log-in"></span> Logout</button></a>
+                    <span>
+                        <a><button class="my-button-like-link">Logout</button></a>
+                    </span>
                 </form:form>
             </sec:authorize>
         </ul>
     </div>
 </nav>
-<div class="row" style="margin: 0px; padding: 0px;">
-    <div class="container-for-lend col-12">
-        <div class="my-lend-car">
+
+<div class="main-container">
+    <div class="container-for-width">
+        <div class="lend-car">
                     <%--@elvariable id="car" type="java"--%>
                     <form:form  action="/lend" method="post"  modelAttribute="car">
-                        <div style="margin-bottom: 50px">
-                            <h2 style="color: white; text-align: center">Lend car to somebody who needs it </h2>
-                            <h4 style="color: white; text-align: center" >Your vehicle is able to earn money for you by itself</h4>
+                        <div class="text-of-lend">
+                            <h2><b>Lend car to somebody who needs it</b> </h2>
+                            <h4><b>Your vehicle is able to earn money for you by itself</b></h4>
                         </div>
-                        <div class="form-row">
-                            <form:errors style="color: #07fff6">${message}</form:errors>
+                        <div class="error">
+                            <form:errors>${message}</form:errors>
+                            <form:errors path="periodOfRentFrom"/>
+                            <form:errors path="periodOfRentTo"/>
+                            <form:errors path="pricePerDay"/>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4 col-xs-6">
-                                <form:label path="region" for="region" cssStyle="color: white; float: right">City</form:label>
-                                <form:select  path="region" items="${cities}" id="region" cssStyle="height: 33px" class="form-control"/>
-                            </div>
-                            <div class="form-group col-md-2 col-xs-6">
-                                <form:label path="periodOfRentFrom" for="periodOfRentFrom"  cssStyle="color: white; float: right">Rent from</form:label>
-                                <input  type="date" name="periodOfRentFrom" id="periodOfRentFrom" class="form-control"/>
-                                <form:errors path="periodOfRentFrom" style="color: #07fff6"/>
-                            </div>
+                        <div class="form-for-inputs">
+                                <div class="form-group">
+                                    <form:label path="region" for="region">City</form:label>
+                                    <form:select class="custom-select form-control" path="region" id="city" style="height: 33px;">
+                                        <option selected>${missing}</option>
+                                        <c:forEach  var="city" items="${cities}">
+                                            <option name="city">${city}</option>
+                                        </c:forEach>
+                                    </form:select>
+                                </div>
+                                <div class="form-group">
+                                    <form:label path="periodOfRentFrom" for="periodOfRentFrom">Rent from</form:label>
+                                    <input placeholder="Rent from" class="textbox-n form-control" name="periodOfRentFrom" type="text" onfocus="(this.type='date')"  id="periodOfRentFrom"/>
+                                </div>
 
-                            <div class="form-group col-md-2 col-xs-6">
-                                <form:label path="periodOfRentTo" for="periodOfRentTo"  cssStyle="color: white; float: right">Rent to</form:label>
-                                <input  type="date" name="periodOfRentTo" id="periodOfRentTo" class="form-control"/>
-                                <form:errors path="periodOfRentTo" style="color: #07fff6"/>
-                            </div>
+                                <div class="form-group">
+                                    <form:label path="periodOfRentTo" for="periodOfRentTo" >Rent to</form:label>
+                                    <input placeholder="Rent to" class="textbox-n form-control" name="periodOfRentTo" type="text" onfocus="(this.type='date')"  id="periodOfRentTo"/>
+                                </div>
 
-                            <div class="form-group col-md-2 col-xs-6">
-                                <form:label path="pricePerDay" for="pricePerDay" cssStyle="color: white; float: right">Price</form:label>
-                                <form:input path="pricePerDay" class="form-control" id="pricePerDay"  placeholder="Input price"/>
-                                <form:errors path="pricePerDay" style="color: #07fff6"/>
-                            </div>
+                                <div class="form-group">
+                                    <form:label path="pricePerDay" for="pricePerDay">Price</form:label>
+                                    <form:input path="pricePerDay" class="form-control" id="pricePerDay"  placeholder="Input price"/>
+                                </div>
 
-                            <div class="form-group col-md-2 col-xs-6">
-                                <form:label path="chauffeur" for="chauffeur" cssStyle="color: white; float: right">Chauffeur</form:label>
-                                <form:select  path="chauffeur" items="${chauffeurs}" id="chauffeur" cssStyle="height: 33px" class="form-control"/>
-                            </div>
-                            <div class="form-group col-md-12 col-xs-6">
-                                <button type="submit"  class="btn btn-success my-button-float-right">Add car</button>
-                            </div>
+                                <div class="form-group">
+                                    <form:label path="chauffeur" for="chauffeur">Chauffeur</form:label>
+                                    <form:select  path="chauffeur" items="${chauffeurs}" id="chauffeur" cssStyle="height: 33px" class="form-control"/>
+                                </div>
+                        </div>
+                        <div class="lend-button">
+                            <button type="submit"  class="btn btn-success my-button-float-right">Add car</button>
                         </div>
                     </form:form>
         </div>
-    </div>
-</div>
-
-<div class="row" style="margin: 0px;">
-    <div class="my-form-for-particular-order col-md-7 col-xs-12">
-        <div class="background-for-pictures-of-lend">
-            <h2 style="color: white">Particular order</h2>
-            <div class="my-particular-order">
+        <div class="container-for-particular-order">
+            <div class="header-of-order-container"><h2>Particular order</h2></div>
+            <div class="particular-order">
                 City: <b>${particularOrder.region}</b> |
                 Rent from: <b>${particularOrder.periodOfRentFrom}</b> |
                 Rent to: <b>${particularOrder.periodOfRentTo}</b> |
@@ -133,65 +135,60 @@
                 Chauffeur: <b>${particularOrder.chauffeur}</b> |
                 <a href="/lend/delete/${particularOrder.id}" class="btn btn-warning btn-sm">Delete</a>
             </div>
-            <div style="height:310px; overflow:auto;">
+            <div class="list-of-clients-container" >
                 <a:forEach items="${clients}" var="client">
-                    <div class="my-list-of-clients col-md-6 col-xs-6">
-                        <div class="my-margin-for-list-of-clients">
-                            <img style="width: 100px; border: 1px solid #4f92ff; float: right; display: block; color: white;" src="https://s3.amazonaws.com/drivers-bucket/${client.photo}">
-                            <h4 style="color: white;"><a style="color: white" href="/profile/${client.id}"> ${client.name} ${client.surname}</a></h4>
-                            <h5 style="margin: 2px 10px; color: white;">${client.phone}</h5>
-                            <h5 style="margin: 2px 10px; color: white;">${client.age} years old, ${client.placeOfBirth}</h5>
-                            <h5 style="margin: 2px 10px; color: white;">${client.experience} year(s) of practice</h5>
-                            <h5 style="margin: 2px 10px; color: white;">${client.countOfTrips} finished trip(s)</h5>
-                            <a href="/lend/refuse/${client.id}/${particularOrder.id}" style="float: right; margin: 2px" class="btn btn-warning btn-sm">Refuse</a>
-                            <a href="/lend/confirm/${client.id}/${particularOrder.id}" style="float: right; margin: 2px" class="btn btn-primary btn-sm">Confirm</a>
+                    <div class="list-of-clients">
+                        <img  src="https://s3.amazonaws.com/drivers-bucket/${client.photo}">
+                        <h4><a href="/profile/${client.id}"><b> ${client.name} ${client.surname}</b></a></h4>
+                        <h5>${client.phone}</h5>
+                        <h5>${client.age} years old, ${client.placeOfBirth}</h5>
+                        <h5>${client.experience} year(s) of practice</h5>
+                        <h5>${client.countOfTrips} finished trip(s)</h5>
+                        <div  class="buttons">
+                            <a href="/lend/refuse/${client.id}/${particularOrder.id}" class="btn btn-warning btn-sm">Refuse</a>
+                            <a href="/lend/confirm/${client.id}/${particularOrder.id}"  class="btn btn-primary btn-sm">Confirm</a>
                         </div>
                     </div>
                 </a:forEach>
-
                 <a:forEach items="${reservedOrder}" var="client">
-                    <div class="my-list-of-clients col-md-6 col-xs-6">
-                        <div class="my-margin-for-client">
-                            <img style="width: 100px; float: right; border: 1px solid #f0ad4e ; display: block; color: white;" src="https://s3.amazonaws.com/drivers-bucket/${client.photo}">
-                            <h4 style="color: white;"><a href="/profile/${client.id}" style="color: white;"> ${client.name} ${client.surname}</a></h4>
-                            <h5 style="margin: 2px 10px; color: white;">${client.phone}</h5>
-                            <h5 style="margin: 2px 10px; color: white;">${client.age} years old, ${client.placeOfBirth}</h5>
-                            <h5 style="margin: 2px 10px; color: white;">${client.experience} year(s) of practice</h5>
-                            <h5 style="margin: 2px 10px; color: white;">${client.countOfTrips} finished trip(s)</h5>
+                    <div class="list-of-clients">
+                        <div class="message"><b> ${message}</b></div>
+                        <img  src="https://s3.amazonaws.com/drivers-bucket/${client.photo}">
+                        <h4><a href="/profile/${client.id}"><b> ${client.name} ${client.surname}</b></a></h4>
+                        <h5>${client.phone}</h5>
+                        <h5>${client.age} years old, ${client.placeOfBirth}</h5>
+                        <h5>${client.experience} year(s) of practice</h5>
+                        <h5>${client.countOfTrips} finished trip(s)</h5>
+                        <div  class="buttons">
                             <a href="/lend/complete/${particularOrder.id}" style="float: right; margin: 2px" class="btn btn-warning btn-sm">Complete</a>
-                            <span style="color: white; background-color: #f0ad4e; padding: 3px; margin: 5px; float: left; border: 1px solid #4f92ff; border-radius: 3px;" > ${message}</span>
                         </div>
                     </div>
                 </a:forEach>
             </div>
         </div>
-</div>
 
-<div class="my-form-for-finished-orders col-md-5 col-xs-12">
-    <div class="background-for-pictures-of-lend">
-            <div class="form-row">
-                <h2 style="color: white">Finished trips</h2>
-            </div>
-            <div style="height:390px; overflow:auto;">
+        <div class="container-for-finished-trips">
+            <div class="header-of-order-container"><h2>Finished trips</h2></div>
+            <div class="finished-trips">
                 <a:forEach items="${finishedOrders}" var="order">
-                    <div class="my-particular-order">
-                        <a style="float: right" href="/profile/${order.driverId}" class="btn btn-warning btn-sm">Driver</a>
-                        City: <b>${order.region}</b> |
-                        Price: <b>${order.pricePerDay}</b> |
-                        Chauffeur: <b>${order.chauffeur}</b> <br>
-                        Rent from: <b>${order.periodOfRentFrom}</b> |
-                        Rent to: <b>${order.periodOfRentTo}</b>
-                    </div>
+                        <div class="one-trip">
+                            <a style="margin-top: -5px; float: right" href="/profile/${order.driverId}" class="btn btn-warning btn-sm">Driver</a>
+                            City: <b>${order.region}</b> |
+                            Price: <b>${order.pricePerDay}</b> |
+                            Chauffeur: <b>${order.chauffeur}</b> |
+                            Rent from: <b>${order.periodOfRentFrom}</b> |
+                            Rent to: <b>${order.periodOfRentTo}</b>
+                        </div>
                 </a:forEach>
             </div>
+        </div>
     </div>
 </div>
-</div>
-<div class="row" style="margin: 0px;">
-    <div class="footer col-12" style="margin-top: 10px;">
-        <a href="#"><img src="http://www.aphi.nz/img/linkedin.png" style="height: 40px; border-radius: 4px; border: 1px solid white; margin: 5px 0px;"></a>
-        <a href="#"><img src="http://www.jmkxyy.com/find-me-on-facebook-icon/find-me-on-facebook-icon-11.jpg" style="height: 40px; border-radius: 4px; border: 1px solid white; margin: 5px 0px;"></a>
-        <a href="#"><img src="https://www.modmy.com/sites/modmy.com/files/styles/large/public/article-images/2017/08/github-app-button.png?itok=ONaR9O8z" style="height: 42px; margin: 5px opx;"></a>
+<div class="footer">
+    <div class="footer-content">
+        <a target="_blank" href="https://www.linkedin.com/in/andrii-didovych/"><img src="http://www.aphi.nz/img/linkedin.png" style="height: 40px; border-radius: 4px; border: 1px solid white;"></a>
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100008114774126"><img src="http://www.jmkxyy.com/find-me-on-facebook-icon/find-me-on-facebook-icon-11.jpg" style="height: 40px; border-radius: 4px; border: 1px solid white; "></a>
+        <a target="_blank" href="https://github.com/Andrii-Didovych/RentCarSpringBootApp"><img src="https://www.modmy.com/sites/modmy.com/files/styles/large/public/article-images/2017/08/github-app-button.png?itok=ONaR9O8z" style="height: 42px;"></a>
     </div>
 </div>
 </body>

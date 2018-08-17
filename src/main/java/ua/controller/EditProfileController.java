@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.entity.enums.*;
 import ua.model.request.*;
+import ua.model.view.CarView;
 import ua.service.CarService;
 import ua.service.DriverService;
 import ua.service.FileWriter;
@@ -71,7 +72,12 @@ public class EditProfileController {
         model.addAttribute("idOfAuthorizedDriver", id);
         model.addAttribute("missing", MyGlobalVariable.NOT_SELECTED);
         model.addAttribute("infoAboutDriver", driverService.findDriverViewById(id));
-        model.addAttribute("infoAboutCar", driverService.findCarViewByDriverId(id));
+        CarView car = driverService.findCarViewByDriverId(id);
+        if (car==null) {
+            model.addAttribute("photoOfCar", MyGlobalVariable.DEFAULT_PHOTO_OF_CAR);
+        }
+        else model.addAttribute("photoOfCar", car.getPhotoOfCar());
+        model.addAttribute("infoAboutCar", car);
         model.addAttribute("cities", carService.findAllCities());
         model.addAttribute("brands", carService.findAllBrands());
         model.addAttribute("bodies", Body.values());

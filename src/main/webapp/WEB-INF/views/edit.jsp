@@ -175,10 +175,8 @@
                                             <form:label path="dateOfBirth" for="birth">Birthday</form:label>
                                         </div>
                                         <div class="input-form">
-
-                                            <input  type="date" name="dateOfBirth" id="birth" class="form-control"/>
+                                            <input placeholder="Date of birth" class="textbox-n form-control" name="dateOfBirth" type="text" onfocus="(this.type='date')"  id="dateOfBirth"/>
                                         </div>
-
                                     </div>
 
                                     <div class="error">
@@ -189,7 +187,7 @@
                                             <form:label path="experienceBegan" for="experienceBegan">Start driving</form:label>
                                         </div>
                                         <div class="input-form">
-                                            <input  type="date" name="experienceBegan" id="experienceBegan" class="form-control"/>
+                                            <input placeholder="Experience" class="textbox-n form-control" name="experienceBegan" type="text" onfocus="(this.type='date')"  id="experienceBegan"/>
                                         </div>
                                     </div>
 
@@ -250,7 +248,7 @@
         <div class="edit-about-driver-container">
             <div class="left-side">
                 <div class="photo-of-driver-or-car">
-                    <img src="https://s3.amazonaws.com/cars-bucket/${infoAboutCar.photoOfCar}">
+                    <img src="https://s3.amazonaws.com/cars-bucket/${photoOfCar}">
                 </div>
                 <div class="info-about-driver-or-car" >
                     <h4>
@@ -328,7 +326,7 @@
                                 <form:label path="yearOfManufacture" for="yearOfManufacture">Production</form:label>
                             </div>
                             <div class="input-form">
-                                <input  type="date" name="yearOfManufacture" id="yearOfManufacture" class="form-control"/>
+                                <input placeholder="Year of manufacture" class="textbox-n form-control" name="yearOfManufacture" type="text" onfocus="(this.type='date')"  id="yearOfManufacture"/>
                             </div>
                         </div>
 
