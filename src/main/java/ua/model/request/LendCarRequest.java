@@ -4,12 +4,14 @@ import org.hibernate.validator.constraints.NotBlank;
 import ua.entity.City;
 import ua.entity.enums.*;
 import ua.validation.annotation.AllFieldShouldBeFailed;
+import ua.validation.annotation.CarNotCreatedOrderAlreadyAdded;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import java.math.BigDecimal;
 
-@AllFieldShouldBeFailed(message = "Some of fields were not failed or date is wrong!")
+@CarNotCreatedOrderAlreadyAdded(message = "Car has not been added yet or order exists!")
+@AllFieldShouldBeFailed( message= "Some of fields were not failed or date is wrong!")
 public class LendCarRequest {
 
     @DecimalMin(value = "1", inclusive = true, message = "Price is less than allowed!")

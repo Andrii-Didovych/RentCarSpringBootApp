@@ -1,0 +1,299 @@
+@charset "UTF-8";
+html, body{
+    height: 100%;
+}
+.my-button-like-link {
+    background:none!important;
+    color:inherit;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    /*border is optional*/
+    cursor: pointer;
+    margin-top: 13px;
+    margin-right: 10px;
+    color: #f0ad4e;
+    font-size: 16px;
+}
+.borrow-container{
+    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 100%;
+    min-height: 100%;
+}
+.borrow-container-for-width {
+    max-width: 900px;
+    background-color:rgba(86, 61, 124, 0.7);
+    margin: auto;
+    padding: 10px;
+}
+.header-of-filter-text {
+    color: #f0ad4e;
+    text-align: center;
+    margin: 50px 0;
+}
+.filter-form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.filter-form>*{
+    flex-basis: 30%;
+    margin: 5px;
+}
+label {
+    color: #f0ad4e;
+    font-size: 15px;
+}
+.form-control{
+    border: #f0ad4e 1px solid;
+}
+.helpfull-filters button{
+    background-color: #f0ad4e;
+    color: #563d7c;
+    border: #da9c44;
+    margin-top: 30px;
+}
+.filter-form button:hover{
+    background-color: #da9c44;
+    color: #563d7c;
+}
+/*------------------------*/
+.container-for-free-cars {
+    background-color: #563d7c;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.one-order{
+    margin-bottom: 10px;
+
+    background-color: #f0ad4e;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 49%;
+}
+.about-car{
+    width: 50%;
+}
+.about-order{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+.order{
+    margin: 5px;
+    width: 80%;
+}
+.button-of-order{
+    width: 20%;
+    -webkit-writing-mode: vertical-rl;
+}
+.button-of-order .btn {
+    margin: 5px;
+    padding: 18px 2px;
+    background-color: #563d7c;
+    color: #f0ad4e;
+    border: #a292b9 1px solid;
+    font-size: 16px;
+}
+.button-of-order .btn:hover {
+    background-color: #563d7c;
+    color: #d28c2a;
+    border: 1px solid blueviolet;
+}
+
+.order p{
+    margin: -3px;
+    text-align: right;
+    color: #563d7c;
+}
+.background-of-order {
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-attachment: scroll;
+    background-origin: border-box;
+    background-position: center center;
+    background-size: cover;
+    margin-left: 5px;
+
+}
+.background-for-color{
+    background-color: rgba(86, 61, 124, 0.61);
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    margin-top: 5px;
+}
+.background-for-color>img{
+    width: 80px;
+    height: 80px;
+    border: #f0ad4e 2px solid;
+}
+.background-for-color .btn{
+    display: none;
+}
+.size-of-page {
+    background-color: #563d7c;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+/*----------------*/
+.header-of-order-container>h2{
+    color: #f0ad4e;
+    padding: 10px;
+}
+.container-for-finished-trips{
+    background-color: #563d7c;
+    margin: 100px 0;
+    padding: 10px;
+}
+.finished-trips{
+    height:300px;
+    overflow:auto;
+}
+.container-for-finished-trips>.header-of-order-container>h2{
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 15px;
+}
+.one-trip {
+    background-color: #f0ad4e;
+    padding: 10px 15px 7px 15px;
+    color: #563d7c;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.buttons-of-trip{
+    width: 140px;
+    margin-left: 20px;
+}
+.buttons-of-trip .btn {
+    background-color: #563d7c;
+    color: #f0ad4e;
+    border: 1px solid #563d7c;
+    width: 60px;
+    padding: 6px 3px;
+    margin-bottom: 3px;
+}
+.trip-info{
+    padding-top: 7px;
+    width: 80%;
+}
+.message{
+    background-color: #d28c2a;
+    color: #563d7c;
+    margin-bottom: -5px;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 7px;
+}
+.footer {
+    background-color: #563d7c;
+    margin: auto;
+}
+.footer-content {
+    margin: auto;
+    text-align: right;
+    padding: 10px 5px 5px 10px;
+    width: 900px;
+}
+.footer-content img{
+    margin-bottom: 5px;
+
+}
+@media screen and (max-width: 920px){
+    .footer-content{
+        width: 100%;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 820px){
+    .background-for-color>img{
+        display: none;
+    }
+    .about-car{
+        width: 40%;
+    }
+    .about-order{
+        width: 60%;
+    }
+    .background-for-color{
+        height: 85px;
+    }
+}
+@media screen and (max-width: 680px){
+    .one-order{
+        flex-basis: 95%;
+    }
+}
+@media screen and (max-width: 400px){
+    .button-of-order{
+        display: none;
+    }
+    .background-for-color{
+        display: block;
+    }
+    .background-for-color .btn {
+        display: block;
+        padding: 2px;
+        margin: -6px -6px 5px -6px;
+        background-color: #563d7c;
+        color: #f0ad4e;
+        border: 1px solid #a292b9;
+    }
+    .order{
+        width: 100%;
+    }
+    .filter-form {
+        flex-direction: column;
+    }
+    .helpfull-filters .form-group{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+    .helpfull-filters label{
+        width: 60%;
+        text-align: right;
+        padding-right: 5px;
+    }
+    .helpfull-filters button{
+        width: 100%;
+    }
+    .one-trip{
+        flex-direction: column;
+    }
+    .buttons-of-trip {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+        margin-left: 0px;
+    }
+    .trip-info{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 600px){
+    .one-trip{
+        flex-direction: column;
+    }
+    .buttons-of-trip {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+        margin-left: 0px;
+    }
+    .trip-info{
+        width: 100%;
+    }
+}

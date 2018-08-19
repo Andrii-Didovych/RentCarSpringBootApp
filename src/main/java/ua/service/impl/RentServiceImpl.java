@@ -39,17 +39,15 @@ public class RentServiceImpl implements RentService {
     public void lendCar(LendCarRequest request, String email) {
         Driver driver = repository.findDriverByUserEmail(email);
         Car car = driver.getCar();
-        if (car != null && repository.checkIfOrderIsActive(email, Status.ACTIVE) == null) {
-            InfoAboutRent aboutRent = new InfoAboutRent();
-            aboutRent.setCar(car);
-            aboutRent.setChauffeur(request.getChauffeur());
-            aboutRent.setPeriodOfRentFrom(converter.convertStringToLocalDate(request.getPeriodOfRentFrom()));
-            aboutRent.setPeriodOfRentTo(converter.convertStringToLocalDate(request.getPeriodOfRentTo()));
-            aboutRent.setPricePerDay(request.getPricePerDay());
-            aboutRent.setRegion(request.getRegion());
-            aboutRent.setStatus(Status.ACTIVE);
-            repository.save(aboutRent);
-        }
+        InfoAboutRent aboutRent = new InfoAboutRent();
+        aboutRent.setCar(car);
+        aboutRent.setChauffeur(request.getChauffeur());
+        aboutRent.setPeriodOfRentFrom(converter.convertStringToLocalDate(request.getPeriodOfRentFrom()));
+        aboutRent.setPeriodOfRentTo(converter.convertStringToLocalDate(request.getPeriodOfRentTo()));
+        aboutRent.setPricePerDay(request.getPricePerDay());
+        aboutRent.setRegion(request.getRegion());
+        aboutRent.setStatus(Status.ACTIVE);
+        repository.save(aboutRent);
     }
 
 
@@ -118,10 +116,15 @@ public class RentServiceImpl implements RentService {
 
 //    delete own suggestion if it has not confirmed yet
     @Override
-    public void deleteOrder(Integer infoAboutRentId) {
+    public String deleteOrder(Integer infoAboutRentId) {
+        String massage = null;
         InfoAboutRent rent = repository.findParticularOrderById(infoAboutRentId);
-        if (rent.getStatus().equals(Status.ACTIVE))
+        boolean isActive = rent.getStatus().equals(Status.ACTIVE);
+        if (rent.getStatus().equals(Status.ACTIVE)) {
             repository.delete(rent);
+            return  "Order was deleted";
+        }
+        else return "Order is reserved!";
     }
 
     @Override

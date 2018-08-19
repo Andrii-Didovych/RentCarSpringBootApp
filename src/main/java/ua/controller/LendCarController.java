@@ -52,7 +52,7 @@ public class LendCarController {
             String message;
             if(particularOrder.getStatus().equals(Status.COMPLETED)){ message = "Waiting for complete of client";}
             else message = "Trip is continuing";
-            model.addAttribute("message", message);
+            model.addAttribute("infoAboutOrder", message);
         }
         return "lend";
     }
@@ -76,8 +76,8 @@ public class LendCarController {
         return "redirect:/lend";
     }
 
-    @GetMapping("/delete/{infoAboutRentId}")
-    public String deleteOrder(@PathVariable Integer infoAboutRentId) {
+    @GetMapping("/delete/{infoAboutRentId}" )
+    public String deleteOrder(@PathVariable Integer infoAboutRentId, Model model) {
         service.deleteOrder(infoAboutRentId);
         return "redirect:/lend";
     }

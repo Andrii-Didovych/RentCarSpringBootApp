@@ -58,7 +58,7 @@ public class BorrowCarController {
             String message;
             if(order.getStatus().equals(Status.COMPLETED)){ message = "Wait for complete";}
             else message = "In the way";
-            model.addAttribute("message", message);
+            model.addAttribute("messageAboutTrip", message);
         }
         model.addAttribute("finishedOrders", service.findFinishedOrdersForBorrow(idOfAuthorizedDriver));
         return "borrow";

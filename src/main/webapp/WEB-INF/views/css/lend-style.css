@@ -70,10 +70,9 @@ label{
 .error{
     background-color: #f0ad4e;
     color: #563d7c;
+    padding-left: 5px;
 }
-.error>*{
-    margin: 5px;
-}
+
 .text-of-lend{
     text-align: center;
     color: #f0ad4e;
@@ -221,6 +220,7 @@ label{
         width: 80%;
         margin: auto;
     }
+
     .lend-button {
         width: 80%;
         margin: auto;
@@ -259,6 +259,9 @@ label{
     /*end lend*/
     .buttons{
         margin: 10px 0 0 0;
+    }
+    .error{
+        width: 100%;
     }
 }
 @media screen and (max-width: 330px){

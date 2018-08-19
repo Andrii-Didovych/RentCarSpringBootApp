@@ -18,7 +18,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-        <%@include file='lend-style.css' %>
+        <%@include file='css/lend-style.css' %>
     </style>
     <title>Lend</title>
 </head>
@@ -152,7 +152,7 @@
                 </a:forEach>
                 <a:forEach items="${reservedOrder}" var="client">
                     <div class="list-of-clients">
-                        <div class="message"><b> ${message}</b></div>
+                        <div class="message"><b> ${infoAboutOrder}</b></div>
                         <img  src="https://s3.amazonaws.com/drivers-bucket/${client.photo}">
                         <h4><a href="/profile/${client.id}"><b> ${client.name} ${client.surname}</b></a></h4>
                         <h5>${client.phone}</h5>
