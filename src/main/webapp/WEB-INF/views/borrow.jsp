@@ -213,7 +213,7 @@
                     </div>
                 </a:forEach>
                 <a:forEach items="${reservedOrder}" var="order">
-                    <div class="message"><b>${message}</b></div>
+                    <div class="message"><b>${messageAboutTrip}</b></div>
                     <div class="one-trip">
                         <div class="trip-info">
                             City: <b>${order.region}</b> |
