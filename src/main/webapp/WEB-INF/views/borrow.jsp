@@ -201,6 +201,7 @@
             <div class="header-of-order-container"><h2>Wishes</h2></div>
             <div class="finished-trips">
                 <a:forEach items="${selectedOrders}" var="order">
+                    <div class="message"><b>${messageAboutTrip}</b></div>
                     <div class="one-trip">
                         <div class="trip-info">
                             City: <b>${order.region}</b> |

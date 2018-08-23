@@ -54,14 +54,14 @@ public class BorrowCarController {
         model.addAttribute("freeCars", service.findAllFreeCars(idOfAuthorizedDriver, pageable, filter));
         model.addAttribute("selectedOrders", service.findSelectedOrders(idOfAuthorizedDriver));
         List<OrderView> orderViews = service.findReservedOrder(idOfAuthorizedDriver);
+        String message="Wait for confirm";
         if(!orderViews.isEmpty()){
             OrderView order = orderViews.get(0);
             model.addAttribute("reservedOrder", orderViews);
-            String message;
             if(order.getStatus().equals(Status.COMPLETED)){ message = "Wait for complete";}
             else message = "In the way";
-            model.addAttribute("messageAboutTrip", message);
         }
+        model.addAttribute("messageAboutTrip", message);
         model.addAttribute("finishedOrders", service.findFinishedOrdersForBorrow(idOfAuthorizedDriver));
         model.addAttribute("myMessage", myMessage);
         myMessage = "";
