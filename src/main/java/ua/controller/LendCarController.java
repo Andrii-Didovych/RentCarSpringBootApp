@@ -9,6 +9,7 @@ import ua.entity.enums.Chauffeur;
 import ua.entity.enums.Status;
 import ua.model.request.CarRequest;
 import ua.model.request.LendCarRequest;
+import ua.model.view.DriverView;
 import ua.model.view.OrderView;
 import ua.service.BorrowService;
 import ua.service.CarService;
@@ -18,6 +19,7 @@ import ua.service.impl.MyGlobalVariable;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/lend")
@@ -49,9 +51,12 @@ public class LendCarController {
         OrderView particularOrder = service.findParticularOrder(principal.getName());
         if(particularOrder!=null){
             model.addAttribute("particularOrder", particularOrder);
-            model.addAttribute("clients", service.findAllClients(particularOrder.getId()));
-            model.addAttribute("reservedOrder", service.findReservedOrder(particularOrder.getId()));
+            List<DriverView> views = service.findAllClients(particularOrder.getId());
+            List<DriverView> reservedViews = service.findReservedOrder(particularOrder.getId());
             String message;
+            if (views.isEmpty()&&reservedViews.isEmpty()) model.addAttribute("ifNotSelected","Here will be users who selected your car!");
+            model.addAttribute("clients", views);
+            model.addAttribute("reservedOrder",reservedViews);
             if(particularOrder.getStatus().equals(Status.COMPLETED)){ message = "Waiting for complete of client";}
             else message = "Trip is continuing";
             model.addAttribute("infoAboutOrder", message);

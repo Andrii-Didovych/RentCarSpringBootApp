@@ -136,6 +136,7 @@
                 Chauffeur: <b>${particularOrder.chauffeur}</b> |
                 <a href="/lend/delete" class="btn btn-warning btn-sm">Delete</a>
             </div>
+            <div class="my-message"><b> ${ifNotSelected}</b></div>
             <div class="list-of-clients-container" >
                 <a:forEach items="${clients}" var="client">
                     <div class="list-of-clients">
