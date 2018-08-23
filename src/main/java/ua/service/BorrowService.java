@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface BorrowService {
 
-    void addCarToOrderList(Integer id, String email);
+    String addCarToOrderList(Integer id, String email);
 
     Page<OrderView> findAllFreeCars(Integer id, Pageable pageable, CarFilter filter);
 
@@ -17,7 +17,7 @@ public interface BorrowService {
 
     List<OrderView> findReservedOrder(Integer id);
 
-    void completeOrder(Integer infoAboutRentId);
+    void completeOrder(Integer infoAboutRentId, String email);
 
     List<OrderView> findFinishedOrdersForBorrow(Integer id);
 

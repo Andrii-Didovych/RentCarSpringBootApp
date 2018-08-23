@@ -209,7 +209,16 @@ label {
 }
 .footer-content img{
     margin-bottom: 5px;
-
+}
+.container-for-my-message{
+    padding: 10px 5px 0px 5px;
+    background-color: #563d7c;
+}
+.my-message{
+    background-color: #da9c44;
+    margin: 0px 10px;
+    color: #563d7c;
+    padding: 0px 10px;
 }
 @media screen and (max-width: 920px){
     .footer-content{

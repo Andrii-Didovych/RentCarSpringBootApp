@@ -176,10 +176,11 @@ public class BorrowRepositoryImpl implements BorrowRepository {
             if (!filter.getMinPrice().isEmpty()) {
                 specifications.add((root, query, cb) -> cb.ge(root.get(InfoAboutRent_.pricePerDay), new BigDecimal(filter.getMinPrice())));
             }
-            if (!filter.getMinPrice().isEmpty()) {
+            if (!filter.getMaxPrice().isEmpty()) {
                 specifications.add((root, query, cb) -> cb.le(root.get(InfoAboutRent_.pricePerDay), new BigDecimal(filter.getMaxPrice())));
             }
         }
+
         void findByCity() {
             List<String>  regionIds = filter.getRegion();
             regionIds.remove(MyGlobalVariable.NOT_SELECTED);

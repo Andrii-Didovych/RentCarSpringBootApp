@@ -26,6 +26,8 @@ public class BorrowCarController {
 
     private DriverService driverService;
 
+    private String myMessage = "";
+
     public BorrowCarController(BorrowService service, DriverService driverService) {
         this.service = service;
         this.driverService = driverService;
@@ -61,12 +63,14 @@ public class BorrowCarController {
             model.addAttribute("messageAboutTrip", message);
         }
         model.addAttribute("finishedOrders", service.findFinishedOrdersForBorrow(idOfAuthorizedDriver));
+        model.addAttribute("myMessage", myMessage);
+        myMessage = "";
         return "borrow";
     }
 
     @GetMapping("/choose/{id}")
     public String choose(@PathVariable Integer id, Principal principal, @PageableDefault Pageable pageable, @ModelAttribute("filter") CarFilter filter){
-        service.addCarToOrderList(id, principal.getName());
+        myMessage=service.addCarToOrderList(id, principal.getName());
         return "redirect:/borrow"+buildParams(pageable,filter);
     }
 
@@ -77,8 +81,8 @@ public class BorrowCarController {
     }
 
     @GetMapping("/complete/{infoAboutRentId}")
-    public String completeOrder(@PathVariable Integer infoAboutRentId, @PageableDefault Pageable pageable, @ModelAttribute("carFilter") CarFilter filter){
-        service.completeOrder(infoAboutRentId);
+    public String completeOrder(@PathVariable Integer infoAboutRentId, @PageableDefault Pageable pageable, @ModelAttribute("carFilter") CarFilter filter, Principal principal){
+        service.completeOrder(infoAboutRentId, principal.getName());
         return "redirect:/borrow" +buildParams(pageable, filter);
     }
 

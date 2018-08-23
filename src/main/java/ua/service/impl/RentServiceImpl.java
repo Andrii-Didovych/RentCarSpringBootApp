@@ -105,7 +105,7 @@ public class RentServiceImpl implements RentService {
         Iterator<InfoAboutRent> iterator1 = driver.getListOfInfoAboutCar().iterator();
         while (iterator1.hasNext()) {
             InfoAboutRent aboutRent = iterator1.next();
-            if (aboutRent.getId() != rent.getId()) {
+            if (aboutRent.getId() != rent.getId()&&!aboutRent.getStatus().equals(Status.PASSIVE)) {
                 iterator1.remove();
             }
         }
@@ -116,20 +116,16 @@ public class RentServiceImpl implements RentService {
 
 //    delete own suggestion if it has not confirmed yet
     @Override
-    public String deleteOrder(Integer infoAboutRentId) {
-        String massage = null;
+    public void deleteOrder(Integer infoAboutRentId) {
         InfoAboutRent rent = repository.findParticularOrderById(infoAboutRentId);
-        boolean isActive = rent.getStatus().equals(Status.ACTIVE);
-        if (rent.getStatus().equals(Status.ACTIVE)) {
-            repository.delete(rent);
-            return  "Order was deleted";
-        }
-        else return "Order is reserved!";
+        repository.delete(rent);
     }
 
     @Override
     public void completeOrder(Integer infoAboutRentId) {
         InfoAboutRent rent = repository.findParticularOrderById(infoAboutRentId);
+        Driver driver = rent.getCar().getDriver();
+        driver.setCountOfTrips(driver.getCountOfTrips()+1);
         if (rent.getStatus().equals(Status.RESERVED)) {
             rent.setStatus(Status.COMPLETED);
         }

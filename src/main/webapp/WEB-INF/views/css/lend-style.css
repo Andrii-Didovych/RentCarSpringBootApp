@@ -169,6 +169,12 @@ label{
     color: #563d7c;
     margin-bottom: 10px;
 }
+.my-message{
+    background-color: #da9c44;
+    margin: 0px 10px;
+    color: #563d7c;
+    padding: 0px 10px;
+}
 .footer {
     background-color: #563d7c;
     margin: auto;

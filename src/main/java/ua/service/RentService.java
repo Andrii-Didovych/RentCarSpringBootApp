@@ -25,7 +25,7 @@ public interface RentService {
 
     void confirmOrder(Integer driverId, Integer infoAboutRentId);
 
-    String deleteOrder(Integer infoAboutRentId);
+    void deleteOrder(Integer infoAboutRentId);
 
     void completeOrder(Integer infoAboutRentId);
 }

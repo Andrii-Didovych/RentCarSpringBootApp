@@ -59,11 +59,11 @@ public interface RentRepository extends JpaRepository<InfoAboutRent,Integer> {
     @Query("select i from InfoAboutRent i where i.id=?1")
     InfoAboutRent findOrderById(Integer id);
 
-    @Query("select new ua.model.view.OrderView(o.id, d.id, o.pricePerDay, o.periodOfRentFrom, o.periodOfRentTo, r.name, o.chauffeur, o.status, d.name, d.surname, b.name, c.model, d.photoURL, c.photoOfCar)" +
-            "from InfoAboutRent o join o.region r join o.car c join c.brand b join c.driver d where d.id<> ?1 and o.status= ?2  order by o desc")
-    List<OrderView> findAllFreeCars(Integer id, Status status);
+//    @Query("select new ua.model.view.OrderView(o.id, d.id, o.pricePerDay, o.periodOfRentFrom, o.periodOfRentTo, r.name, o.chauffeur, o.status, d.name, d.surname, b.name, c.model, d.photoURL, c.photoOfCar)" +
+//            "from InfoAboutRent o join o.region r join o.car c join c.brand b join c.driver d where d.id<> ?1 and o.status= ?2  order by o desc")
+//    List<OrderView> findAllFreeCars(Integer id, Status status);
 
-    @Query("select new ua.model.view.OrderView(o.id, ds.id, o.pricePerDay, o.periodOfRentFrom, o.periodOfRentTo, r.name, o.chauffeur, o.status, d.name, d.surname, b.name, c.model, d.photoURL, c.photoOfCar)" +
+    @Query("select new ua.model.view.OrderView(o.id, ds.id, d.id, o.pricePerDay, o.periodOfRentFrom, o.periodOfRentTo, r.name, o.chauffeur, o.status, d.name, d.surname, b.name, c.model, d.photoURL, c.photoOfCar)" +
             "from InfoAboutRent o join o.car c join c.brand b join c.driver d join o.drivers ds join o.region r where ds.id = ?1 and (o.status = ?2 or o.status=?3)  order by o desc")
     List<OrderView> findOrdersByDriverId(Integer id, Status active, Status completed);
 }

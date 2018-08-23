@@ -127,13 +127,14 @@
         </div>
         <div class="container-for-particular-order">
             <div class="header-of-order-container"><h2>Particular order</h2></div>
+            <div class="my-message"><b> ${myMessage}</b></div>
             <div class="particular-order">
                 City: <b>${particularOrder.region}</b> |
                 Rent from: <b>${particularOrder.periodOfRentFrom}</b> |
                 Rent to: <b>${particularOrder.periodOfRentTo}</b> |
                 Price: <b>${particularOrder.pricePerDay}</b> |
                 Chauffeur: <b>${particularOrder.chauffeur}</b> |
-                <a href="/lend/delete/${particularOrder.id}" class="btn btn-warning btn-sm">Delete</a>
+                <a href="/lend/delete" class="btn btn-warning btn-sm">Delete</a>
             </div>
             <div class="list-of-clients-container" >
                 <a:forEach items="${clients}" var="client">

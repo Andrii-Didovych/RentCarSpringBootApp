@@ -27,6 +27,8 @@ public class LendCarController {
 
     private DriverService driverService;
 
+    private String myMessage = "";
+
     public LendCarController(RentService service, DriverService driverService) {
         this.service = service;
         this.driverService = driverService;
@@ -54,6 +56,8 @@ public class LendCarController {
             else message = "Trip is continuing";
             model.addAttribute("infoAboutOrder", message);
         }
+        model.addAttribute("myMessage", myMessage);
+        myMessage = "";
         return "lend";
     }
 
@@ -76,9 +80,15 @@ public class LendCarController {
         return "redirect:/lend";
     }
 
-    @GetMapping("/delete/{infoAboutRentId}" )
-    public String deleteOrder(@PathVariable Integer infoAboutRentId, Model model) {
-        service.deleteOrder(infoAboutRentId);
+    @GetMapping("/delete" )
+    public String deleteOrder(Principal principal) {
+        OrderView rent = service.findParticularOrder(principal.getName());
+        if(rent==null) myMessage = "Order has not been added yet!";
+        else if(!rent.getStatus().equals(Status.ACTIVE)) myMessage = "Order has already reserved!";
+        else {
+            myMessage = "Order was deleted";
+            service.deleteOrder(rent.getId());
+        }
         return "redirect:/lend";
     }
 

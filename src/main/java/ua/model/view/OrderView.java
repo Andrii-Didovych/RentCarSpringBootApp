@@ -11,6 +11,8 @@ public class OrderView {
 
     private Integer driverId;
 
+    private Integer ownerId;
+
     private BigDecimal pricePerDay;
 
     private LocalDate periodOfRentFrom;
@@ -53,6 +55,24 @@ public class OrderView {
         this.photoOfCar = photoOfCar;
     }
 
+    public OrderView(Integer id, Integer driverId, Integer ownerId, BigDecimal pricePerDay, LocalDate periodOfRentFrom, LocalDate periodOfRentTo, String region, Chauffeur chauffeur, Status status, String name, String surname, String brand, String model, String photoOfDriver, String photoOfCar) {
+        this.id = id;
+        this.driverId = driverId;
+        this.ownerId = ownerId;
+        this.pricePerDay = pricePerDay;
+        this.periodOfRentFrom = periodOfRentFrom;
+        this.periodOfRentTo = periodOfRentTo;
+        this.region = region;
+        this.chauffeur = chauffeur;
+        this.status = status;
+        this.name = name;
+        this.surname = surname;
+        this.brand = brand;
+        this.model = model;
+        this.photoOfDriver = photoOfDriver;
+        this.photoOfCar = photoOfCar;
+    }
+
     public OrderView(Integer id, Integer driverId, BigDecimal pricePerDay, LocalDate periodOfRentFrom, LocalDate periodOfRentTo, String region, Chauffeur chauffeur, Status status) {
         this.id = id;
         this.driverId = driverId;
@@ -72,6 +92,14 @@ public class OrderView {
         this.region = region;
         this.chauffeur = chauffeur;
         this.status = status;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getName() {

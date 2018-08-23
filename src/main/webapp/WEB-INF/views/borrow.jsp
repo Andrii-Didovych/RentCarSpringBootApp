@@ -158,7 +158,10 @@
 
 
 
-                <div class="container-for-free-cars">
+        <div class="container-for-my-message">
+            <div class="my-message">${myMessage}</div>
+        </div>
+        <div class="container-for-free-cars">
                         <a:forEach var="order" items="${freeCars.content}">
                             <div class="one-order">
                                     <div class="about-car">
@@ -208,7 +211,7 @@
                         </div>
                         <div class="buttons-of-trip">
                             <a  href="/borrow/delete/${order.driverId}/${order.id}<custom:allParams/>" class="btn btn-warning btn-sm">Delete</a>
-                            <a class="btn btn-primary btn-sm" href="/profile/${order.driverId}">Driver</a>
+                            <a class="btn btn-primary btn-sm" href="/profile/${order.ownerId}">Driver</a>
                         </div>
                     </div>
                 </a:forEach>
@@ -223,7 +226,7 @@
                             Rent to: <b>${order.periodOfRentTo}</b>
                         </div>
                         <div class="buttons-of-trip">
-                            <a  class="btn btn-primary btn-sm" href="/profile/${order.driverId}">Driver</a>
+                            <a  class="btn btn-primary btn-sm" href="/profile/${order.ownerId}">Driver</a>
                             <a  href="/borrow/complete/${order.id}<custom:allParams/>" class="btn btn-warning btn-sm">Complete</a>
                         </div>
                     </div>
@@ -244,7 +247,7 @@
                             Rent to: <b>${order.periodOfRentTo}</b>
                         </div>
                         <div class="buttons-of-trip">
-                            <a style="float: right" href="/profile/${order.driverId}" class="btn btn-warning btn-sm">Driver</a>
+                            <a style="float: right" href="/profile/${order.ownerId}" class="btn btn-warning btn-sm">Driver</a>
                         </div>
                     </div>
                 </a:forEach>
