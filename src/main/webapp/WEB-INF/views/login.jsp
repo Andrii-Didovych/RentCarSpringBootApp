@@ -45,16 +45,16 @@
         </div>
         <div class="right">
             <div class="login-form">
-                    <form:form  action="/login" method="post" >
+                    <form:form  action="/login" method="post">
                         <div class="form-group row">
                             <c:if test="${param.fail}">
-                                <div class="fail-to-authorize" style="background-color: #563d7c; color: #f0ad4e; padding:3px 5px;">
-                                    Fail to authorize
-                                </div>
+                                   Fail to authorize<br>
+                                <span style="font-size: 12px">Maybe you have not activated your account</span>
                             </c:if>
+                                ${message}
                         </div>
                         <div class="form-group row" style="border: #563d7c 1px solid; border-radius: 5px">
-                            <input name="login" class="form-control"  placeholder="Input email"/>
+                            <input name="login" type="email"  class="form-control"  placeholder="Input email"/>
                         </div>
                         <div class="form-group row" style="border: #563d7c 1px solid; border-radius: 5px">
                             <input type="password" name="password" class="form-control"  placeholder="Input password"/>

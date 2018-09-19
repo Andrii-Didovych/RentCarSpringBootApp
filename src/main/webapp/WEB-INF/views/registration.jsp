@@ -92,6 +92,7 @@
                 <div class="form-group row">
                         <form:input type="phone" path="phone" class="form-control border-input-form" id="inputPhone"  placeholder="Input phone"/>
                 </div>
+
                 <div class="form-group row" style="display: flex; flex-direction: row-reverse">
                         <button type="submit" class="btn btn-success" style="border-radius: 5px; border: #da9c44;background-color: #f0ad4e; color: #563d7c; margin-top: 5px;">Register</button>
                 </div>

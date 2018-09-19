@@ -1,7 +1,5 @@
 package ua.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         ua.entity.User entity = repository.findByEmail(email);
-        if(entity==null)throw new UsernameNotFoundException("User width email "+ email+" not exists");
+        if(entity==null||  entity.getActivationCode()!=null)throw new UsernameNotFoundException("User width email "+ email+" not exists");
         return new User(email, entity.getPassword(), AuthorityUtils.createAuthorityList(entity.getRole().name()));
     }
 }

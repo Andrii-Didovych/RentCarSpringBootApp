@@ -115,8 +115,5 @@ html, body{
         text-decoration: none;
         color: #f0ad4e;
     }
-    .fail-to-authorize> {
-        background-color: #563d7c;
-        color: #f0ad4e;
-    }
+
 }

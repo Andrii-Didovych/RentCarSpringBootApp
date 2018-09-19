@@ -1,7 +1,9 @@
 package ua.service.impl;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import ua.converter.DateConverter;
 import ua.entity.*;
 import ua.entity.enums.Role;
@@ -12,7 +14,10 @@ import ua.repository.UserRepository;
 import ua.service.UserService;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
+
 @Service
 public class UserServiceImpl  implements UserService {
 
@@ -22,20 +27,34 @@ public class UserServiceImpl  implements UserService {
 
     private final DateConverter converter;
 
+    private final MailSender mailSender;
 
-    public UserServiceImpl(UserRepository repository, PasswordEncoder encoder, DateConverter converter) {
+    @Value("${url.path}")
+    private String urlPath;
+
+
+    public UserServiceImpl(UserRepository repository, PasswordEncoder encoder, DateConverter converter, MailSender mailSender) {
         this.repository = repository;
         this.encoder = encoder;
         this.converter = converter;
+        this.mailSender = mailSender;
     }
 
-    @Override
-    public void save(DriverRegistrationRequest request) {
+    public boolean addUser(DriverRegistrationRequest request) {
+        User userFromDb = repository.findByEmail(request.getEmail());
+
+        if (userFromDb != null) {
+            return false;
+        }
+
         User user = new User();
+        user.setActive(false);
         user.setEmail(request.getEmail());
+        user.setActivationCode(UUID.randomUUID().toString());
         user.setPassword(encoder.encode(request.getPassword()));
         if (repository.findAll().isEmpty())user.setRole(Role.ROLE_ADMIN);
         else user.setRole(Role.ROLE_DRIVER);
+
         Driver driver = new Driver();
         driver.setName(request.getName());
         driver.setSurname(request.getSurname());
@@ -48,7 +67,54 @@ public class UserServiceImpl  implements UserService {
         user.setDriver(driver);
         driver.setUser(user);
         repository.save(user);
+
+        if (!StringUtils.isEmpty(user.getEmail())) {
+            String message = String.format(
+                    "Hello, " + user.getDriver().getName()+ "! \n" +
+                            "Welcome to RentCar. Please, visit next link: " + urlPath+
+                    user.getActivationCode()
+            );
+            System.out.printf(message + "   "+ user.getDriver().getName());
+            mailSender.send(user.getEmail(), "Activation code", message);
+        }
+
+        return true;
     }
+
+    @Override
+    public boolean activateUser(String code) {
+        User user = repository.findByActivationCode(code);
+
+        if (user == null) {
+            return false;
+        }
+
+        user.setActivationCode(null);
+        user.setActive(true);
+        repository.save(user);
+
+        return true;
+    }
+    //    @Override
+//    public void save(DriverRegistrationRequest request) {
+//        User user = new User();
+//        user.setEmail(request.getEmail());
+//        user.setPassword(encoder.encode(request.getPassword()));
+//        if (repository.findAll().isEmpty())user.setRole(Role.ROLE_ADMIN);
+//        else user.setRole(Role.ROLE_DRIVER);
+//        Driver driver = new Driver();
+//        driver.setName(request.getName());
+//        driver.setSurname(request.getSurname());
+//        driver.setPhone(request.getPhone());
+//        driver.setCountOfTrips(0);
+//        driver.setDateOfBirth(LocalDate.of(1111,11,11));
+//        driver.setExperienceBegan(LocalDate.of(1111,11,11));
+//        driver.setPlaceOfBirth(repository.findCityByNameRepository(1));
+//        driver.setPhotoURL(MyGlobalVariable.DEFAULT_PHOTO_OF_DRIVER);
+//        user.setDriver(driver);
+//        driver.setUser(user);
+//        repository.save(user);
+//    }
 
     @Override
     public List<String> findAllCities() {
