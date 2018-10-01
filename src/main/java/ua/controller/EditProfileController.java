@@ -101,14 +101,11 @@ public class EditProfileController {
     }
 
     @PostMapping("/photo-of-car")
-    public String savePhotoOfCar(@ModelAttribute("fileRequestCar") @Valid FileRequestCar fileRequestCar, BindingResult result, @ModelAttribute("fileRequest") FileRequest fileRequest,Model model, Principal principal) {
+    public String savePhotoOfCar(@ModelAttribute("fileRequestCar") @Valid FileRequestCar fileRequestCar, BindingResult result, @ModelAttribute("fileRequest") FileRequest fileRequest,Model model, Principal principal) throws S3ServiceException {
         if (result.hasErrors()) return show(model,fileRequest, fileRequestCar, principal);
-        try {
             if(!fileRequestCar.getFile().getOriginalFilename().isEmpty())
             fileWriter.writeToAmazonS3(fileRequestCar.getFile(), principal.getName(), MyGlobalVariable.CARS_BUCKET);
-        } catch (S3ServiceException e) {
-            e.printStackTrace();
-        }
+
         return "redirect:/edit";
     }
 

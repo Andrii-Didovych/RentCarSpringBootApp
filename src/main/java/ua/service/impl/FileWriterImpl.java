@@ -33,7 +33,7 @@ public class FileWriterImpl implements FileWriter {
 
     @Override
     public void writeToAmazonS3(MultipartFile file, String email, String bucketName) throws S3ServiceException {
-        AWSCredentials credentials = new AWSCredentials("AKIAJIRK523PUBIRZDPQ","h3MF97YOh64OmldWngbLAPo/Yrx1RjUMBpv/Y1FS");
+        AWSCredentials credentials = new AWSCredentials("AKIAIABR5H54Q2H7VKCQ","D53f38oLy+4XxHuNWFWa3v5gPUJW/p5xvOHDHp7Y");
         S3Service s3 = new RestS3Service(credentials);
         S3Bucket imageBucket = s3.getBucket(bucketName);
         File newName = renameFile(file);
