@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ua.entity.enums.*;
 import ua.model.request.*;
 import ua.model.view.CarView;
+import ua.repository.UserRepository;
 import ua.service.CarService;
 import ua.service.DriverService;
 import ua.service.FileWriter;
@@ -33,11 +34,14 @@ public class EditProfileController {
 
     private final DriverService driverService;
 
-    public EditProfileController(UserService service, CarService carService, FileWriter fileWriter, DriverService driverService) {
+    private final UserRepository userRepository;
+
+    public EditProfileController(UserService service, CarService carService, FileWriter fileWriter, DriverService driverService, UserRepository userRepository) {
         this.service = service;
         this.carService = carService;
         this.fileWriter = fileWriter;
         this.driverService = driverService;
+        this.userRepository = userRepository;
     }
 
     @ModelAttribute("user")
@@ -101,10 +105,15 @@ public class EditProfileController {
     }
 
     @PostMapping("/photo-of-car")
-    public String savePhotoOfCar(@ModelAttribute("fileRequestCar") @Valid FileRequestCar fileRequestCar, BindingResult result, @ModelAttribute("fileRequest") FileRequest fileRequest,Model model, Principal principal) throws S3ServiceException {
+    public String savePhotoOfCar(@ModelAttribute("fileRequestCar") @Valid FileRequestCar fileRequestCar, BindingResult result, @ModelAttribute("fileRequest") FileRequest fileRequest,Model model, Principal principal) {
         if (result.hasErrors()) return show(model,fileRequest, fileRequestCar, principal);
-            if(!fileRequestCar.getFile().getOriginalFilename().isEmpty())
-            fileWriter.writeToAmazonS3(fileRequestCar.getFile(), principal.getName(), MyGlobalVariable.CARS_BUCKET);
+            if(!fileRequestCar.getFile().getOriginalFilename().isEmpty() && userRepository.findByEmail(principal.getName()).getDriver().getCar()!=null) {
+                try {
+                    fileWriter.writeToAmazonS3(fileRequestCar.getFile(), principal.getName(), MyGlobalVariable.CARS_BUCKET);
+                } catch (S3ServiceException e) {
+                    e.printStackTrace();
+                }
+            }
 
         return "redirect:/edit";
     }
