@@ -26,8 +26,6 @@ public class BorrowCarController {
 
     private DriverService driverService;
 
-    private String myMessage = "";
-
     public BorrowCarController(BorrowService service, DriverService driverService) {
         this.service = service;
         this.driverService = driverService;
@@ -63,15 +61,13 @@ public class BorrowCarController {
         }
         model.addAttribute("messageAboutTrip", message);
         model.addAttribute("finishedOrders", service.findFinishedOrdersForBorrow(idOfAuthorizedDriver));
-        model.addAttribute("myMessage", myMessage);
-        myMessage = "";
         return "borrow";
     }
 
     @GetMapping("/choose/{id}")
-    public String choose(@PathVariable Integer id, Principal principal, @PageableDefault Pageable pageable, @ModelAttribute("filter") CarFilter filter){
-        myMessage=service.addCarToOrderList(id, principal.getName());
-        return "redirect:/borrow"+buildParams(pageable,filter);
+    public String choose(Model model, @PathVariable Integer id, Principal principal, @PageableDefault Pageable pageable, @ModelAttribute("filter") CarFilter filter){
+        model.addAttribute("myMessage", service.addCarToOrderList(id, principal.getName()));
+        return show(model, principal, pageable, filter);
     }
 
     @GetMapping("/delete/{driverId}/{infoAboutRentId}")

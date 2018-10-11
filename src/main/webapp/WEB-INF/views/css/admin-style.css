@@ -47,39 +47,4 @@ nav ~ a{
 }
 
 
-.my-button-like-link {
-    background:none!important;
-    color:inherit;
-    border:none;
-    padding:0!important;
-    font: inherit;
-    /*border is optional*/
-    cursor: pointer;
-    margin-top: 13px;
-    margin-right: 10px;
-    color: #f0ad4e;
-    font-size: 16px;
-}
-
-.footer {
-    background-color: #563d7c;
-    margin: auto;
-}
-.footer-content {
-    margin: auto;
-    text-align: right;
-    padding: 10px 5px 5px 10px;
-    width: 900px;
-}
-.footer-content img{
-    margin-bottom: 5px;
-
-}
-@media screen and (max-width: 920px){
-    .footer-content{
-        width: 100%;
-        text-align: center;
-    }
-}
-
 

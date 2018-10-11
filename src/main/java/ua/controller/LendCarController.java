@@ -4,15 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ua.entity.InfoAboutRent;
 import ua.entity.enums.Chauffeur;
 import ua.entity.enums.Status;
-import ua.model.request.CarRequest;
 import ua.model.request.LendCarRequest;
 import ua.model.view.DriverView;
 import ua.model.view.OrderView;
-import ua.service.BorrowService;
-import ua.service.CarService;
 import ua.service.DriverService;
 import ua.service.RentService;
 import ua.service.impl.MyGlobalVariable;
@@ -28,8 +24,6 @@ public class LendCarController {
     private RentService service;
 
     private DriverService driverService;
-
-    private String myMessage = "";
 
     public LendCarController(RentService service, DriverService driverService) {
         this.service = service;
@@ -61,8 +55,6 @@ public class LendCarController {
             else message = "Trip is continuing";
             model.addAttribute("infoAboutOrder", message);
         }
-        model.addAttribute("myMessage", myMessage);
-        myMessage = "";
         return "lend";
     }
 
@@ -86,15 +78,16 @@ public class LendCarController {
     }
 
     @GetMapping("/delete" )
-    public String deleteOrder(Principal principal) {
+    public String deleteOrder(Principal principal, Model model) {
+        String myMessage;
         OrderView rent = service.findParticularOrder(principal.getName());
-        if(rent==null) myMessage = "Order has not been added yet!";
-        else if(!rent.getStatus().equals(Status.ACTIVE)) myMessage = "Order has already reserved!";
+        if(!rent.getStatus().equals(Status.ACTIVE)) myMessage = "Order has already reserved!";
         else {
             myMessage = "Order was deleted";
             service.deleteOrder(rent.getId());
         }
-        return "redirect:/lend";
+        model.addAttribute("myMessage", myMessage);
+        return show(model, principal);
     }
 
     @GetMapping("/complete/{infoAboutRentId}")

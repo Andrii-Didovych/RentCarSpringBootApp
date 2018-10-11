@@ -4,17 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
 }
-.my-button-like-link {
-    background:none!important;
-    color:inherit;
-    border:none;
-    padding:0!important;
-    font: inherit;
-    cursor: pointer;
-    margin: 14px 10px 0 10px;
-    color: #f0ad4e;
-    font-size: 16px;
-}
+
 .edit-container {
     margin: 0;
     padding: 0;
@@ -123,18 +113,7 @@ h5{
 .select-form>select{
     height: 33px;
 }
-.footer {
-    background-color: #563d7c;
-    margin: auto;
-}
-.footer-content {
-    margin: auto;
-    text-align: right;
-    padding: 10px;
-}
-.footer-content img{
-    margin-bottom: 5px;
-}
+
 input[type='file']{
     color:#f0ad4e;
     font-size:14px;
@@ -143,12 +122,6 @@ input[type='file']{
     margin-top: 10px;
 }
 
-
-@media screen and (min-width: 951px){
-    .footer-content{
-        width: 900px;
-    }
-}
 @media screen and (max-width: 950px){
 
     .edit-about-driver-container{
@@ -170,11 +143,6 @@ input[type='file']{
     .photo-of-driver-or-car>img{
         margin: 10px 10px 0 0px;
     }
-
-    .footer-content{
-        text-align: center;
-    }
-
 }
 @media screen and (max-width: 620px){
 
@@ -216,8 +184,5 @@ input[type='file']{
     }
     .error{
         margin: 0px;
-    }
-    .my-button-like-link{
-        margin: 5px 0 0 0;
     }
 }
