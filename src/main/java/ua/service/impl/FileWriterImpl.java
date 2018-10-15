@@ -10,6 +10,7 @@ import org.jets3t.service.impl.rest.httpclient.RestS3Service;
 import org.jets3t.service.model.S3Bucket;
 import org.jets3t.service.model.S3Object;
 import org.jets3t.service.security.AWSCredentials;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ua.entity.Driver;
@@ -25,6 +26,12 @@ import java.util.UUID;
 @Service
 public class FileWriterImpl implements FileWriter {
 
+    @Value("${aws.access.key}")
+    private String accessKey;
+
+    @Value("${aws.secret.access.key}")
+    private String secretKey;
+
     private final DriverRepository repository;
 
     public FileWriterImpl(DriverRepository repository) {
@@ -33,7 +40,7 @@ public class FileWriterImpl implements FileWriter {
 
     @Override
     public void writeToAmazonS3(MultipartFile file, String email, String bucketName) throws S3ServiceException {
-        AWSCredentials credentials = new AWSCredentials("AKIAJRJD4TFWEDOA45CA","5MFRYaMc8/EWXXCGkSkao5ULwi6bRGX6L8o0GO2M");
+        AWSCredentials credentials = new AWSCredentials(accessKey,secretKey);
         S3Service s3 = new RestS3Service(credentials);
         S3Bucket imageBucket = s3.getBucket(bucketName);
         File newName = renameFile(file);
