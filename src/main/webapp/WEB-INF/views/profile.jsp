@@ -14,10 +14,10 @@
     <div class="container-profile-for-width">
             <div class="header" >
                 <div class="header-background">
-                    <img src="https://s3.amazonaws.com/drivers-bucket/${driver.photo}" >
+                    <img src="https://s3.amazonaws.com/bucket-of-drivars/${driver.photo}" >
                 </div>
                 <div class="header-picture-xs">
-                    <img src="https://s3.amazonaws.com/drivers-bucket/${driver.photo}" >
+                    <img src="https://s3.amazonaws.com/bucket-of-drivars/${driver.photo}" >
                 </div>
                 <h2><b>${driver.name} ${driver.surname}</b></h2>
             </div>
@@ -67,9 +67,9 @@
                         <a:forEach var="comment" items="${comments}">
                             <div class="comment">
                                 <div class="container-for-header">
-                                    <div class="comment-background" style="background-image: url(https://s3.amazonaws.com/cars-bucket/${photoOfCarForComment});" >
+                                    <div class="comment-background" style="background-image: url(https://s3.amazonaws.com/bucket-of-cars/${photoOfCarForComment});" >
                                         <div class="comment-inside">
-                                            <img src="https://s3.amazonaws.com/drivers-bucket/${comment.photoOfSender}">
+                                            <img src="https://s3.amazonaws.com/bucket-of-drivars/${comment.photoOfSender}">
                                             <h4 class="name-and-surname"><a href="/profile/${comment.senderId}">${comment.name} ${comment.surname}</a></h4>
                                         </div>
                                     </div>
