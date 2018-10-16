@@ -16,7 +16,7 @@ nav ~ a{
 }
 .admin-container{
     padding: 30px;
-    background-image: url(http://www.cnsgroupwa.com/wp-content/uploads/2016/08/jdjdce.png);
+    background-image: url(https://s3.eu-central-1.amazonaws.com/sweater-demo-bucket/e-1.jpg);
     background-repeat: no-repeat;
     background-clip: border-box;
     background-attachment: fixed;
