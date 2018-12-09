@@ -99,9 +99,9 @@
                         <a:forEach var="order" items="${freeCars.content}">
                             <div class="one-order">
                                     <div class="about-car">
-                                            <div class="background-of-order" style="background-image: url(https://s3.amazonaws.com/bucket-of-cars/${order.photoOfCar});" >
+                                            <div class="background-of-order" style="background-image: url(/img/${order.photoOfCar});" >
                                                 <div class="background-for-color">
-                                                    <img src="https://s3.amazonaws.com/bucket-of-drivars/${order.photoOfDriver}">
+                                                    <img src="/img/${order.photoOfDriver}">
                                                     <a class="btn btn-success btn-sm" href="/borrow/choose/${order.id}<custom:allParams/>">Take it</a>
                                                     <h3 style="margin: auto 5px;"><a style="text-decoration: none; color: #f0ad4e" href="/profile/${order.driverId}">${order.brand} ${order.model}</a></h3> <br>
                                                 </div>

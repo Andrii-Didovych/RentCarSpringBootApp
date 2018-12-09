@@ -13,7 +13,7 @@
             <div class="edit-about-driver-container">
                 <div class="left-side">
                         <div class="photo-of-driver-or-car">
-                            <img src="https://s3.amazonaws.com/bucket-of-drivars/${infoAboutDriver.photo}" >
+                            <img src="/img/${infoAboutDriver.photo}" >
                         </div>
                         <div class="info-about-driver-or-car" >
                             <h4><b>${infoAboutDriver.name}
@@ -182,7 +182,7 @@
         <div class="edit-about-driver-container">
             <div class="left-side">
                 <div class="photo-of-driver-or-car">
-                    <img src="https://s3.amazonaws.com/bucket-of-cars/${photoOfCar}">
+                    <img src="/img/${photoOfCar}">
                 </div>
                 <div class="info-about-driver-or-car" >
                     <h4>

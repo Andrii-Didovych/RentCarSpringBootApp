@@ -81,7 +81,7 @@
             <div class="list-of-clients-container" >
                 <a:forEach items="${clients}" var="client">
                     <div class="list-of-clients">
-                        <img  src="https://s3.amazonaws.com/bucket-of-drivars/${client.photo}">
+                        <img  src="/img/${client.photo}">
                         <h4><a href="/profile/${client.id}"><b> ${client.name} ${client.surname}</b></a></h4>
                         <h5>${client.phone}</h5>
                         <h5>${client.age} years old, ${client.placeOfBirth}</h5>
@@ -96,7 +96,7 @@
                 <a:forEach items="${reservedOrder}" var="client">
                     <div class="list-of-clients">
                         <div class="message"><b> ${infoAboutOrder}</b></div>
-                        <img  src="https://s3.amazonaws.com/bucket-of-drivars/${client.photo}">
+                        <img  src="/img/${client.photo}">
                         <h4><a href="/profile/${client.id}"><b> ${client.name} ${client.surname}</b></a></h4>
                         <h5>${client.phone}</h5>
                         <h5>${client.age} years old, ${client.placeOfBirth}</h5>

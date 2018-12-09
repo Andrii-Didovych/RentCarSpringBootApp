@@ -1,6 +1,7 @@
 package ua.controller;
 
 import org.jets3t.service.S3ServiceException;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import ua.entity.enums.*;
 import ua.model.request.*;
 import ua.model.view.CarView;
@@ -20,6 +22,7 @@ import ua.service.UserService;
 import ua.service.impl.MyGlobalVariable;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.security.Principal;
 
 @Controller
@@ -36,7 +39,7 @@ public class EditProfileController {
 
     private final UserRepository userRepository;
 
-    public EditProfileController(UserService service, CarService carService, FileWriter fileWriter, DriverService driverService, UserRepository userRepository) {
+    public EditProfileController(UserService service, CarService carService, @Qualifier("fileWriterFileSystem") FileWriter fileWriter, DriverService driverService, UserRepository userRepository) {
         this.service = service;
         this.carService = carService;
         this.fileWriter = fileWriter;
@@ -95,10 +98,12 @@ public class EditProfileController {
     @PostMapping("/photo-of-driver")
     public String savePhotoOfDriver(@ModelAttribute("fileRequest") @Valid FileRequest fileRequest, BindingResult result, @ModelAttribute("fileRequestCar") FileRequestCar fileRequestCar,Model model, Principal principal) {
         if (result.hasErrors())return show(model, fileRequest, fileRequestCar, principal);
+        MultipartFile multipartFile = fileRequest.getFile();
         try {
-            if(!fileRequest.getFile().getOriginalFilename().isEmpty())
-                fileWriter.writeToAmazonS3(fileRequest.getFile(), principal.getName(), MyGlobalVariable.DRIVERS_BUCKET);
+            fileWriter.write(multipartFile, principal.getName(), "driver");
         } catch (S3ServiceException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return "redirect:/edit";
@@ -107,14 +112,16 @@ public class EditProfileController {
     @PostMapping("/photo-of-car")
     public String savePhotoOfCar(@ModelAttribute("fileRequestCar") @Valid FileRequestCar fileRequestCar, BindingResult result, @ModelAttribute("fileRequest") FileRequest fileRequest,Model model, Principal principal) {
         if (result.hasErrors()) return show(model,fileRequest, fileRequestCar, principal);
-            if(!fileRequestCar.getFile().getOriginalFilename().isEmpty() && userRepository.findByEmail(principal.getName()).getDriver().getCar()!=null) {
-                try {
-                    fileWriter.writeToAmazonS3(fileRequestCar.getFile(), principal.getName(), MyGlobalVariable.CARS_BUCKET);
-                } catch (S3ServiceException e) {
-                    e.printStackTrace();
-                }
+        if(!fileRequestCar.getFile().getOriginalFilename().isEmpty() && userRepository.findByEmail(principal.getName()).getDriver().getCar()!=null) {
+            MultipartFile multipartFile = fileRequest.getFile();
+            try {
+                fileWriter.write(multipartFile, principal.getName(), "car");
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (S3ServiceException e) {
+                e.printStackTrace();
             }
-
+        }
         return "redirect:/edit";
     }
 

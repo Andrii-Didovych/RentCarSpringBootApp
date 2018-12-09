@@ -34,7 +34,7 @@ public class Driver extends AbstractEntityName {
     @ManyToOne(fetch = FetchType.LAZY)
     private City placeOfBirth;
 
-    @OneToOne(mappedBy = "driver")
+    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
     private Car car;
 
     @OneToMany(mappedBy = "receiver")

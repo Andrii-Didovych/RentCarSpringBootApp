@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ua.entity.Driver;
+import ua.model.request.FileRequestCar;
 import ua.repository.DriverRepository;
 import ua.service.FileWriter;
 
@@ -24,7 +25,7 @@ import java.util.UUID;
 
 
 @Service
-public class FileWriterImpl implements FileWriter {
+public class FileWriterAWS implements FileWriter {
 
     @Value("${aws.access.key}")
     private String accessKey;
@@ -34,12 +35,12 @@ public class FileWriterImpl implements FileWriter {
 
     private final DriverRepository repository;
 
-    public FileWriterImpl(DriverRepository repository) {
+    public FileWriterAWS(DriverRepository repository) {
         this.repository = repository;
     }
 
     @Override
-    public void writeToAmazonS3(MultipartFile file, String email, String bucketName) throws S3ServiceException {
+    public void write(MultipartFile file, String email, String bucketName) throws S3ServiceException {
         AWSCredentials credentials = new AWSCredentials(accessKey,secretKey);
         S3Service s3 = new RestS3Service(credentials);
         S3Bucket imageBucket = s3.getBucket(bucketName);
@@ -64,7 +65,8 @@ public class FileWriterImpl implements FileWriter {
         }
     }
 
-// In order to delete previous photo from correct bucket
+
+    // In order to delete previous photo from correct bucket
     private String determinatePhoto(Driver driver, String bucketName){
         if (bucketName.equals(MyGlobalVariable.DRIVERS_BUCKET))return driver.getPhotoURL();
         else return driver.getCar().getPhotoOfCar();
