@@ -5,16 +5,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import ua.converter.DateConverter;
-import ua.entity.*;
+import ua.entity.Driver;
+import ua.entity.User;
 import ua.entity.enums.Role;
+import ua.model.request.DriverRegistrationRequest;
 import ua.model.request.MainInfoRequest;
 import ua.model.request.PasswordRequest;
-import ua.model.request.DriverRegistrationRequest;
 import ua.repository.UserRepository;
 import ua.service.UserService;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
